@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+}
+
+.navbar {
+  background-color: orange;
+  padding: 0.5em;
+}
+.navbar * {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-brand {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}

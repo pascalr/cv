@@ -6,11 +6,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "app_css" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+<% if controller_name == "home" && action_name == "index" %>
+<% else %>
+<% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to_active 'Pascal Rainville', home_path, class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <%= link_to_active 'Programmation', prog_path, class: "nav-item nav-link" %>
+            <%= link_to_active 'Robotique', robot_path, class: "nav-item nav-link" %>
+            <%= link_to_active 'Conception', conception_path, class: "nav-item nav-link" %>
+          </div>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
