@@ -2,6 +2,19 @@ body {
   margin: 0;
 }
 
+.section {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.section:nth-child(odd) {
+  background-color: #e0e0ff;
+  margin-left: -12.25vw;
+  margin-right: -12.25vw;
+  padding-left: 12.25vw;
+  padding-right: 12.25vw;
+}
+
 .gap-30 > * {margin-right: 30px;} .gap-30:last-child {margin-right: 0px;}
 
 .responsive-margins-lg {

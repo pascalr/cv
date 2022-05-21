@@ -11122,6 +11122,16 @@ body {
   margin: 0;
 }
 
+.section {
+  padding-top: 4em 0;
+}
+
+.section:nth-child(odd) {
+  background-color: #e0e0ff;
+  margin: inherit -12.25vw;
+  padding: inherit 12.25vw;
+}
+
 .gap-30 > * {
   margin-right: 30px;
 }
