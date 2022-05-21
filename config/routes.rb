@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'robot', to: 'home#robot', as: 'robot'
   get 'prog', to: 'home#prog', as: 'prog'
   get 'conception', to: 'home#conception', as: 'conception'
+  get 'armoire', to: 'home#cupboard', as: 'cupboard'
 
   root "home#index"
   #
