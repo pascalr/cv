@@ -11127,7 +11127,12 @@ body {
   padding-bottom: 4em;
 }
 
-.section:nth-child(odd) {
+.logos img {
+  width: 240px;
+  mix-blend-mode: multiply;
+}
+
+.section:nth-child(even) {
   background-color: #e0e0ff;
   margin-left: -12.25vw;
   margin-right: -12.25vw;
