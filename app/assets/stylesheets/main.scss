@@ -24,8 +24,18 @@ h2 {
   padding-left: 12.25vw;
   padding-right: 12.25vw;
 }
+.section:nth-child(even) > *:first-child {
+  order: 1;
+}
+.section > *:first-child {
+  margin-bottom: 8px;
+}
+.section:nth-child(even) > *:nth-child(2) {
+  flex-shrink: 2;
+  flex-grow: 1;
+}
 
-.gap-30 > * {margin-right: 30px;} .gap-30:last-child {margin-right: 0px;}
+.gap-30 > * {margin-right: 30px;} .gap-30 > *:last-child {margin-right: 0px;}
 
 .responsive-margins-lg {
   height: 100%;
@@ -33,7 +43,7 @@ h2 {
   width: 75.75%;
 }
 
-img {
+img, video {
   max-width: 100vw;
 }
 

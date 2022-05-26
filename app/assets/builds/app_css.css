@@ -11145,11 +11145,24 @@ h2, .h2 {
   padding-right: 12.25vw;
 }
 
+.section:nth-child(even) > *:first-child {
+  order: 1;
+}
+
+.section > *:first-child {
+  margin-bottom: 8px;
+}
+
+.section:nth-child(even) > *:nth-child(2) {
+  flex-shrink: 2;
+  flex-grow: 1;
+}
+
 .gap-30 > * {
   margin-right: 30px;
 }
 
-.gap-30:last-child {
+.gap-30 > *:last-child {
   margin-right: 0px;
 }
 
@@ -11159,7 +11172,7 @@ h2, .h2 {
   width: 75.75%;
 }
 
-img {
+img, video {
   max-width: 100vw;
 }
 
