@@ -1,4 +1,5 @@
 Une page pour l'index des projets.
 Une page par projet.
+Une page contact.
 
 La secteur Employé par devrait alterné de couleur...
