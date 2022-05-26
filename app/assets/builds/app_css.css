@@ -11147,6 +11147,7 @@ h2, .h2 {
 
 .section:nth-child(even) > *:first-child {
   order: 1;
+  margin-right: 0px;
 }
 
 .section > *:first-child {
@@ -11156,6 +11157,7 @@ h2, .h2 {
 .section:nth-child(even) > *:nth-child(2) {
   flex-shrink: 2;
   flex-grow: 1;
+  margin-right: 30px;
 }
 
 .gap-30 > * {
