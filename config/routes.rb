@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'prog', to: 'home#prog', as: 'prog'
   get 'conception', to: 'home#conception', as: 'conception'
   get 'armoire', to: 'home#cupboard', as: 'cupboard'
+  
+  resources 'projects', only: 'index'
 
   root "home#index"
   #
