@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+h2 {
+  margin-bottom: 0.8em;
+}
+
 .section {
   padding-top: 4em;
   padding-bottom: 4em;
@@ -9,11 +13,12 @@ body {
 
 .logos img {
   width: 240px;
+  max-width: 18vw;
   mix-blend-mode: multiply;
 }
 
 .section:nth-child(even) {
-  background-color: #e0e0ff;
+  background-color: #f7f5ff;
   margin-left: -12.25vw;
   margin-right: -12.25vw;
   padding-left: 12.25vw;

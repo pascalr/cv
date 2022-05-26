@@ -1,1 +1,4 @@
-Faire un Header pour les titres? Avec une image en background? Conception, robotique, informatique
+Une page pour l'index des projets.
+Une page par projet.
+
+La secteur Employé par devrait alterné de couleur...
