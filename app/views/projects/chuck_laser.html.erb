@@ -1,0 +1,38 @@
+<div class="responsive-margins-lg">
+  
+  <div style='height: 1em;'></div>
+
+  <%= image_tag '/chuck_laser_03.jpg', width: '500', style: 'float: right;' %>
+  <h1>Projet: Guide laser pour perceuse à colonne</h1>
+  <p>Un guide laser imprimé en 3d qui s'installe sur une perceuse en colonne.</p>
+  <p>Lorsque la perceuse tourne, le pointeur laser tourne aussi. À vitesse suffisament élevé, le point lumineux devient une cercle. Cela permet d'aligner rapidement pour percer un trou.</p>
+  <p>C'est un prototype pas trop fonctionnel.</p>
+  <div style='clear: both;'></div>
+  
+  <h2>Contexte</h2>
+  <p>Mon objectif était de percer un trou en plein centre d'une tige pleine ronde. La bonne manière à faire serait d'utiliser un tour, mais malheureusement je n'y avait pas accès et c'est quand même dispendieux comme machine-outil.</p>
+  <p>Je me suis rappelé d'une série de vidéos sur youtube intitulé «Building prototypes» par Dan Gelbart. C'est vraiment génial ces vidéos! J'ai énormément appris dans chacune des 18 vidéos de la série.</p>
+  <p>J'ai décidé d'essayé de patenter avec ma nouvelle imprimante 3d cet outil comme présenté dans une ses vidéos (https://www.youtube.com/watch?v=otSjut1iGGk).</p>
+
+  <h2>Conception</h2>
+  <%= image_tag '/chuck_laser_01.jpg', width: '500' %><br><br>
+  
+  <p>La conception est assez simple. Il y a plusieurs années, j'avais acheté un crayon laser de quelqu'un dans la rue qui en vendait. J'ai dévissé le crayon et j'ai récupéré le pointeur laser.</p>
+
+  <p>J'ai conçu dans le logiciel FreeCAD le modèle 3d à imprimer. Il intègre deux supports à batteries, un support pour le pointeur et un trou pour insérer un micro-interrupteur.</p>
+
+  <a href="/laser_center_finder.zip" download>Télécharger les fichiers FreeCAD</a><br><br>
+
+  <p>Les supports à batteries ont un léger angle pour que la batterie s'insère et reste en position. Pour faire le contact avec les pôles, j'ai utilisé des petits bouts de tôle d'acier que j'ai coupé et plié. J'ai soudé à l'étain des fils électrique sur les contacts. Les deux batteries sont en série pour avoir le bon voltage.</p>
+
+  <p>L'appareil tient en place à l'aide d'une bande d'acier qui fait le tour du mandrin et est vérouillé en place à l'aide d'une vis et d'un écrou.</p>
+
+  <h2>Résultat</h2>
+  <%= image_tag '/chuck_laser_02.jpg', width: '500' %><br><br>
+
+  <p>Le résultat était un peu décevant. Je ne me souviens pas trop pourquoi exactement... Je pense que mon laser n'était pas assez lumineux et/ou le point était trop large en diamètre.</p>
+
+  <p>Une perceuse à colonne n'est pas conçu pour faire des trous de précisions. Il faudrait vraiment une fraiseuse qui offre beaucoup plus de rigidité pour avoir une meilleure précision.</p>
+
+  <p>Avec du recul, je me dis qu'il aurait fallu qu'au moins j'utilise un forêt à centrer avant de percer mon trou.</p>
+</div>

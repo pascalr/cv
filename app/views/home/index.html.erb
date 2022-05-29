@@ -1,7 +1,13 @@
 <div class="responsive-margins-lg">
 
-  <h1>Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+  <div class="section d-md-flex gap-30">
+    <%= image_tag '/photo.jpg', width: '400' %>
+    <div>
+      <h2>Bienvenue!</h2>
+      <p>Bienvenue sur mon site personel! L'idée est de présenter mes projets personnels et mes expériences de travail. Ce site sert, entre autres, de CV en ligne.</p>
+      <p>Un deuxième objectif est de simplement receuillir tous mes projets personnels. J'en ai fait plusieurs et je perds le fil. J'oublie facilement...</p>
+    </div>
+  </div>
 
   <%= render partial: "home/employed_by" %>
 </div>
