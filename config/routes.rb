@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'armoire', to: 'home#cupboard', as: 'cupboard'
 
   get 'laser', to: 'projects#chuck_laser', as: 'chuck_laser'
+  get 'pump', to: 'projects#mattress_pump', as: 'mattress_pump'
   
   resources 'projects', only: 'index'
 

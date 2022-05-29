@@ -3,4 +3,6 @@ class ProjectsController < ApplicationController
   end
   def chuck_laser
   end
+  def mattress_pump
+  end
 end
