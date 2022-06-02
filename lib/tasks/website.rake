@@ -44,45 +44,52 @@ def move_files_without_extensions
   end
 end
 
-# Make the link relative instead of absolute.
-def convert_link(link)
-  $dependencies << link
-  return link.start_with?('/') ? link[1..-1] : link
-end
-def convert_links
-  puts "CONVERTING LINKS"
-  Dir.glob("#{OUT_DIR}/**/*.html") do |path|
-    html = File.read(path)
-    doc = Nokogiri::XML(html)
-    links = doc.css 'a'
-    links.each do |link|
-      link['href'] = convert_link(link['href'])
-    end
-    links = doc.css 'link'
-    links.each do |link|
-      puts 'LINK!'
-      link['href'] = convert_link(link['href'])
-      puts link
-    end
-    imgs = doc.css 'img'
-    imgs.each do |img|
-      img['src'] = convert_link(img['src'])
-    end
-    scripts = doc.css 'script'
-    scripts.each do |script|
-      script['src'] = convert_link(script['src'])
-    end
-    File.write(path, doc.to_html)
-  end
-  puts "DEPENDENCIES: #{$dependencies}"
-end
-
 def _fullpath(path)
   path.start_with?('http') ? path : "http://localhost:3001#{path}"
 end
 
 def _relative_path(path)
   path.start_with?('http') ? path[21..-1] : path
+end
+
+# Make the link relative instead of absolute.
+def convert_link(link, depth)
+  $dependencies << link
+  base = link.start_with?('/') ? link[1..-1] : link
+  return depth == 0 ? base : '.'*depth+'./'+base
+end
+def convert_links
+  puts "CONVERTING LINKS"
+  Dir.glob("#{OUT_DIR}/**/*.html") do |path|
+    rel = File.dirname(path)[(OUT_DIR.length+1)..-1]
+    depth = (rel.nil? || rel == '') ? 0 : rel.count('/')+1
+    puts rel
+    puts depth
+    html = File.read(path)
+    doc = Nokogiri::HTML5(html)
+    links = doc.css 'a'
+    links.each do |link|
+      link['href'] = convert_link(link['href'], depth)
+    end
+    links = doc.css 'link'
+    links.each do |link|
+      link['href'] = convert_link(link['href'], depth)
+    end
+    imgs = doc.css 'img'
+    imgs.each do |img|
+      img['src'] = convert_link(img['src'], depth)
+    end
+    videos = doc.css 'video'
+    videos.each do |video|
+      video['src'] = convert_link(video['src'], depth)
+    end
+    scripts = doc.css 'script'
+    scripts.each do |script|
+      script['src'] = convert_link(script['src'], depth)
+    end
+    File.write(path, doc.to_html)
+  end
+  puts "DEPENDENCIES: #{$dependencies}"
 end
 
 def _download_index(path)
