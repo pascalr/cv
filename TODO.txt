@@ -1,15 +1,10 @@
-Une page pour l'index des projets.
-Une page par projet.
-Une page contact.
+Mettre en ligne.
 
-La secteur Employé par devrait alterné de couleur...
-
-PROJET: Pompe à matelas gonflable.
 PROJET: Head tracking
-PROJET: Achats pièces mécaniques. / Management
 PROJET: Tissus clé mécaniques
-PROJET: Divan
 PROJET: Chaise d'ordinateur
 PROJET: Base de lit
 PROJET: Pyrographie?
 PROJET: Site internet de liste d'épicerie?
+
+Une page contact.

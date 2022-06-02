@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pascal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8"/>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="bjTAGRQMoIn2lG6V49-sETZNduDbLCXoVDi_0Fyc9kjPjZV7JK7XdTkhpS-DCyEvJ-cPaOJgBctpW8cSKEfLYw" />
+    
+
+    <link rel="stylesheet" href="/assets/app_css-a39377eb3f3fa69c18ed7fbe0605312464b39bb94a20a47b99309a7713157ee7.css" />
+    <script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-dc6b2123822d4d75d545c58e8cd82bdb9ab69dcf065d5fdccd3f20f1d53e6630.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-96cbf52c71021ba210235aaeec4720012d2c1df7d2dab3770cfa49eea3bb09da.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-900648768bd96f3faeba359cf33c1bd01ca424ca4d2d05f36a5d8345112ae93c.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/application-dc6b2123822d4d75d545c58e8cd82bdb9ab69dcf065d5fdccd3f20f1d53e6630.js">
+<link rel="modulepreload" href="/assets/turbo.min-96cbf52c71021ba210235aaeec4720012d2c1df7d2dab3770cfa49eea3bb09da.js">
+<link rel="modulepreload" href="/assets/stimulus.min-900648768bd96f3faeba359cf33c1bd01ca424ca4d2d05f36a5d8345112ae93c.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js">
+<script src="/assets/es-module-shims.min-8b21b40925fc92896e87358f40a2a8aaea6bf306b34ee4a215ec09c59c6cb3ba.js" async="async" data-turbo-track="reload"></script>
+<script type="module">import "application"</script>
+    <script src="/assets/application-dc6b2123822d4d75d545c58e8cd82bdb9ab69dcf065d5fdccd3f20f1d53e6630.js" defer="defer"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/home">Pascal Rainville</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <a class="nav-item nav-link" href="/prog">Programmation</a>
+            <a class="nav-item nav-link" href="/robot">Robotique</a>
+            <a class="nav-item nav-link" href="/conception">Conception</a>
+            <a class="nav-item nav-link active" href="/projects">Projets</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="responsive-margins-lg">
+
+  <div class="section d-md-flex gap-30">
+  <img width="640" style="border: 10px solid #555" src="/trempette.jpg" />
+  <div>
+    <h2>Projet: Site de recettes</h2>
+    <p>Un site web qui receuille des recettes d'utilisateurs.</p>
+    <p>Les avantages de ce site comparé à d'autres sont:</p>
+    <ul>
+      <li>Ingrédients directement dans les instructions pour suivre la recette plus facilement.</li>
+      <li>Belles images de photographes pour donner envie.</li>
+      <li>Conversion d'unités dans le format local.</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="600" style="border: 1px solid black;" src="/screenshot_sim.jpg" />
+  <div>
+    <h2>Projet: Simulation d'un bras robotique robot</h2>
+    <p>Pour programmer un bras robotique, il est primordial d'avoir accès à un logiciel pour simuler comment le robot va se conporter dans le monde réel.</p>
+    <p>J'ai créer un simulateur pour mon bras robotique dans le logiciel Godot. Ce logiciel est principalement utilisé pour concevoir des jeux vidéos, mais j'ai trouvé qu'il était très adéquat pour faire un simulateur!</p>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="500" style="border: 10px solid #555;" src="/screenshot_app.jpg" />
+  <div>
+    <h2>Projet: Application recettes personalisées</h2>
+    <p>L'objectif de cette application est de résoudre le problème de ne pas savoir quoi cuisiner. Les recettes sont étiquettées de manière à trouver la réponse à cette question pour toutes les occasions.</p>
+    <p>Personnellement, je classe mes recettes selons ces catégories:</p>
+    <ul>
+      <li>Recette rapide (pour un soir de semaine quand je n'ai pas beaucoup le temps de cuisiner)</li>
+      <li>Pour la semaine (pour cuisiner des grandes quantités le dimanche pour la semaine)</li>
+      <li>Romantique (pour des recettes un peu plus fancy et pas trop salissante!)</li>
+      <li>Potluck (pour des recettes qui se partagent bien et qui peuvent se manger sans ustensiles)</li>
+      <li>BBQ (pour mes recettes végés sur le BBQ pour accompagner ma copine carnivore)</li>
+      <li>Picnic (pour avoir des idées de quoi emporter en picnic)</li>
+      <li>Et bien d'autres...</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <video width="600" height="312" controls="controls" autobuffer="true" muted="muted" src="/robot_pour.mp4"></video>
+  <div>
+    <h2>Projet: Bras robotique</h2>
+    <p>J'ai conçu de toutes pièces un bras robotique dans le but d'aider à la cuisine.</p>
+    <p>C'est un robot 5 axes avec une pince comme effecteur au bout pour tenir des objets ou des outils.</p>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img height="800" style="border: 1px solid #555;" src="/closed_cupboard.jpg" />
+  <div>
+    <h2>Projet: Armoire de cuisine</h2>
+    <p>Une armoire spacieuse en contreplaqué d'érable. Rangement sur les portes de l'armoires pour un accès rapide. Tablettes dans le fond seulement pour bien voir ce qu'il y a en inventaire.</p>
+    <a class="know-more" href="/armoire">En savoir plus...</a>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="400" style="border: 1px solid #555;" src="/jar_label.jpg" />
+  <div>
+    <h2>Projet: Étiquettes intelligentes</h2>
+    <p>J'ai créer une sorte d'étiquette spécialement conçu pour être lisible par une intelligence artificielle et par un humain (contrairement aux codes QR).</p>
+    <p>L'étiquette est délimitée d'un cercle, et contient deux points de référence. Cela permet de déterminer l'orientation. Ainsi, le logiciel de lecture tourne l'image pour que le texte soit dans le bon sens. Ensuite, le logiciel utilise une librairie de reconnaissance optique de caractères afin de lire le texte.</p>
+    <p><b>État actuel:</b> J'ai créer un mini logiciel pour créer des étiquettes dynamiquement qui fonctionne bien. Pour la lecture, il reste encore beaucoup de travail à faire. Le logiciel de lecture est capricieux pour l'éclairage. Il détecte correctement à peu près 70% du temps.</p>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="500" style="border: 1px solid #555;" src="/chuck_laser_03.jpg" />
+  <div>
+    <h2>Projet: Guide laser pour perceuse à colonne</h2>
+    <p>Un guide laser imprimé en 3d qui s'installe sur une perceuse en colonne.</p>
+    <p>Lorsque la perceuse tourne, le pointeur laser tourne aussi. À vitesse suffisament élevé, le point lumineux devient une cercle. Cela permet d'aligner rapidement pour percer un trou.</p>
+    <p>C'est un prototype pas trop fonctionnel.</p>
+    <a class="know-more" href="/laser">En savoir plus...</a>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="500" style="border: 1px solid #bbb;" src="/divan.jpg" />
+  <div>
+    <h2>Projet: Restaurer le divan</h2>
+    <p>Le tissu en faux cuir était en train de s'émietté. J'ai tout enlevé le tissu des coussins et j'ai recousu des nouveaux avec du tissu neuf.</p>
+    <p>Il y avait 3 coussins de dossiers, 2 petit coussins pour s'asseoir et 1 grand coussin pour s'asseoir. J'ai tout décousu les tissus de chacune des sortes. J'ai ensuite découpé des morceaux dans le tissus neuf de la même taille que le gabarit. J'ai ensuite cousu les housses. C'est quand même long, mais ça se fait super bien!</p>
+    <p>Il reste maintenant le tissu de la partie rigide a changé, mais je n'ai pas encore trouvé de tissu que me convenait pour cela.</p>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="400" style="border: 1px solid #555;" src="/mattress_pump_02.jpg" />
+  <div>
+    <h2>Projet: Pompe pour matelas gonflable</h2>
+    <p>Un matelas gonflable qui se dégonfle pendant la nuit c'est un classique et c'est tellement désagréable. J'ai essayé de le patché, mais je n'ai pas réussit. Je ne voulait pas non plus acheté un autre matelas et mettre le mien à la poubelle.</p>
+    <p>Alors, j'ai acheté une petite pompe d'aquarium pour qu'elle pompe de l'air toute la nuit quand le matelas se dégonffle. La pompe n'est pas très bruyante et suffit largement pour gonfler, même trop. J'ai donc conçu un interrupteur de pression pour arrêter la pompe de fonctionner lorsque la pression est trop élevé.</p>
+    <a class="know-more" href="/pump">En savoir plus...</a>
+  </div>
+</div>
+
+  <div class="section d-md-flex gap-30">
+  <img width="500" style="border: 1px solid #555;" src="/admin_website.jpg" />
+  <div>
+    <h2>Projet: Site web d'administration</h2>
+    <p>J'ai appris beaucoup de chose en administration lorsque j'ai suivi le cours «Lancement d'une entreprise». Pour les mettre en pratique, je me suis fait un petit site internet pour gérer l'administration de mon projet.</p>
+    <p>Les pages sont:</p>
+    <ul>
+      <li>Factures: Toutes les factures pour les items achetés</li>
+      <li>Pièces: La liste de tous les biens qui sont ou ont déjà été utilisé</li>
+      <li>Fournisseurs: La liste de tous les fournisseurs</li>
+      <li>Commandes: Une liste temporaire des biens ou services à acheter</li>
+      <li>Rapprochement bancaire, Bilan, États financiers: (Pas encore implémenté)</li>
+    </ul>
+  </div>
+</div>
+
+
+  </diV>
+
+  </body>
+</html>
