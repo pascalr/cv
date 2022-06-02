@@ -4,7 +4,7 @@
 ( rails s -p 3001 -P tmp/pids/prod-pid.txt &> /dev/null & )
 sleep 10 
 rake website:build
-rm -R docs
-cp -R "tmp/localhost:3001" docs
+#rm -R docs
+#cp -R "tmp/localhost:3001" docs
 #cp -R keep/* docs
 #kill `cat tmp/pids/prod-pid.txt`

@@ -1,4 +1,4 @@
-OUT_DIR = "tmp/localhost:3001"
+OUT_DIR = "docs"
 
 require 'set'
   
@@ -51,7 +51,7 @@ end
 
 def _download_index(path)
   puts _fullpath(path)
-  full = "tmp/testing#{_relative_path(path)}"
+  full = "#{OUT_DIR}#{_relative_path(path)}"
   FileUtils.mkdir_p(full) unless File.directory?(full)
   system("wget #{_fullpath(path)} -k -q -O #{full}/index.html") # -q => quiet; -O => output file name; -k => relative file path
   return full
@@ -59,7 +59,7 @@ end
 
 def _download(path)
   puts _fullpath(path)
-  full = "tmp/testing#{_relative_path(path)}"
+  full = "#{OUT_DIR}#{_relative_path(path)}"
   system("wget #{_fullpath(path)} -k -q -O #{full}") # -q => quiet; -O => output file name; -k => relative file path
 end
 
