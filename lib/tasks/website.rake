@@ -41,14 +41,33 @@ def move_files_without_extensions
   end
 end
 
+def _fullpath(path)
+  path.start_with?('http') ? path : "http://localhost:3001#{path}"
+end
+
+def _relative_path(path)
+  path.start_with?('http') ? path[21..-1] : path
+end
+
+def _download_index(path)
+  puts _fullpath(path)
+  full = "tmp/testing#{_relative_path(path)}"
+  FileUtils.mkdir_p(full) unless File.directory?(full)
+  system("wget #{_fullpath(path)} -k -q -O #{full}/index.html") # -q => quiet; -O => output file name; -k => relative file path
+  return full
+end
+
+def _download(path)
+  puts _fullpath(path)
+  full = "tmp/testing#{_relative_path(path)}"
+  system("wget #{_fullpath(path)} -k -q -O #{full}") # -q => quiet; -O => output file name; -k => relative file path
+end
+
 def download(path)
-  puts "http://localhost:3001#{path}"
   $dependencies ||= Set.new
   $downloaded ||= Set.new
 
-  full = "tmp/testing#{path}"
-  FileUtils.mkdir_p(full) unless File.directory?(full)
-  system("wget http://localhost:3001#{path} -q -O #{full}/index.html") # -q => quiet; -O => output file name
+  full = _download_index(path)
   # sudo apt-get install html-xml-utils
   links = `hxwls #{full}/index.html`.split("\n")
   $dependencies.merge(links)
@@ -57,8 +76,16 @@ def download(path)
 end
 
 def download_dependencies
+
+  extensions = ['.jpg', '.jpeg', '.png', '.svg', '.mp4', '.zip']
+
+  puts "DOWNLOADING DEPENDENCIES..."
   list = $dependencies - $downloaded
   puts list
+  list.each do |item|
+    next unless extensions.include?(File.extname(item))
+    _download(item)
+  end
 end
 
 namespace :website do
