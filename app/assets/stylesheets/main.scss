@@ -49,10 +49,15 @@ img, video {
   max-width: 100vw;
 }
 
+
+// (xs) — screen width < 576px (This is the “default” tier)
+// sm — screen width ≥ 576px
+// md — screen width ≥ 768px
+// lg — screen width ≥ 992px
+// xl — screen width ≥ 1200px
+
 @media screen and (max-width: 1200px) {
   .responsive-margins-lg {
     width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
 }
-
-
