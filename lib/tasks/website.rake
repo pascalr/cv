@@ -1,4 +1,6 @@
 OUT_DIR = "tmp/localhost:3001"
+
+require 'set'
   
 $download_list ||= []
     
@@ -17,7 +19,7 @@ def execute_download
   # -P prefix Download inside tmp directory
   # -p ?????
   # -nv no verbose
-  system("wget -nv -e robots=off -p -P tmp -i tmp/download-list")
+  system("wget -nv -e robots=off -p -k -P tmp -i tmp/download-list")
   #system("wget -q -e robots=off -p -P tmp -i tmp/download-list")
   move_files_without_extensions
   $download_list.clear
@@ -39,23 +41,55 @@ def move_files_without_extensions
   end
 end
 
+def download(path)
+  puts "http://localhost:3001#{path}"
+  $dependencies ||= Set.new
+  $downloaded ||= Set.new
+
+  full = "tmp/testing#{path}"
+  FileUtils.mkdir_p(full) unless File.directory?(full)
+  system("wget http://localhost:3001#{path} -q -O #{full}/index.html") # -q => quiet; -O => output file name
+  # sudo apt-get install html-xml-utils
+  links = `hxwls #{full}/index.html`.split("\n")
+  $dependencies.merge(links)
+  $downloaded << path
+
+end
+
+def download_dependencies
+  list = $dependencies - $downloaded
+  puts list
+end
+
 namespace :website do
 
   task clear: :environment do
     FileUtils.rm_rf(OUT_DIR)
   end
 
-  task build: [:environment, :clear, :build_main] do
+  task build: [:environment, :clear, :build_custom] do
   end
 
   task :url_helpers do
     include Rails.application.routes.url_helpers
   end
 
+  task build_custom: [:environment, :url_helpers] do 
+    download(home_path)
+    download(robot_path)
+    download(prog_path)
+    download(conception_path)
+    download(cupboard_path)
+    download(chuck_laser_path)
+    download(mattress_pump_path)
+    download(projects_path)
+    download_dependencies
+  end
+
   desc "TODO"
   task build_main: [:environment, :url_helpers] do
 
-    add_download("/")
+    add_download("/cv")
     execute_download
 
     add_download(home_path)
