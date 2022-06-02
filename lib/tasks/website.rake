@@ -1,8 +1,11 @@
 OUT_DIR = "docs"
 
 require 'set'
+require 'nokogiri'
   
 $download_list ||= []
+  
+$dependencies = Set.new
     
 LOCALES = ["fr-CA"]
 #LOCALES = ["fr", "en"]
@@ -41,6 +44,39 @@ def move_files_without_extensions
   end
 end
 
+# Make the link relative instead of absolute.
+def convert_link(link)
+  $dependencies << link
+  return link.start_with?('/') ? link[1..-1] : link
+end
+def convert_links
+  puts "CONVERTING LINKS"
+  Dir.glob("#{OUT_DIR}/**/*.html") do |path|
+    html = File.read(path)
+    doc = Nokogiri::XML(html)
+    links = doc.css 'a'
+    links.each do |link|
+      link['href'] = convert_link(link['href'])
+    end
+    links = doc.css 'link'
+    links.each do |link|
+      puts 'LINK!'
+      link['href'] = convert_link(link['href'])
+      puts link
+    end
+    imgs = doc.css 'img'
+    imgs.each do |img|
+      img['src'] = convert_link(img['src'])
+    end
+    scripts = doc.css 'script'
+    scripts.each do |script|
+      script['src'] = convert_link(script['src'])
+    end
+    File.write(path, doc.to_html)
+  end
+  puts "DEPENDENCIES: #{$dependencies}"
+end
+
 def _fullpath(path)
   path.start_with?('http') ? path : "http://localhost:3001#{path}"
 end
@@ -53,34 +89,30 @@ def _download_index(path)
   puts _fullpath(path)
   full = "#{OUT_DIR}#{_relative_path(path)}"
   FileUtils.mkdir_p(full) unless File.directory?(full)
-  system("wget #{_fullpath(path)} -k -q -O #{full}/index.html") # -q => quiet; -O => output file name; -k => relative file path
+  system("wget #{_fullpath(path)} -q -O #{full}/index.html") # -q => quiet; -O => output file name; -k => relative file path
   return full
 end
 
 def _download(path)
   puts _fullpath(path)
   full = "#{OUT_DIR}#{_relative_path(path)}"
-  system("wget #{_fullpath(path)} -k -q -O #{full}") # -q => quiet; -O => output file name; -k => relative file path
+  dir = File.dirname(full)
+  FileUtils.mkdir_p(dir) unless File.directory?(dir)
+  system("wget #{_fullpath(path)} -q -O #{full}") # -q => quiet; -O => output file name; -k => relative file path
 end
 
 def download(path)
-  $dependencies ||= Set.new
-  $downloaded ||= Set.new
-
   full = _download_index(path)
   # sudo apt-get install html-xml-utils
-  links = `hxwls #{full}/index.html`.split("\n")
-  $dependencies.merge(links)
-  $downloaded << path
-
+  #links = `hxwls #{full}/index.html`.split("\n")
 end
 
 def download_dependencies
 
-  extensions = ['.jpg', '.jpeg', '.png', '.svg', '.mp4', '.zip']
+  extensions = ['.jpg', '.jpeg', '.png', '.svg', '.mp4', '.zip', '.css', '.js']
 
   puts "DOWNLOADING DEPENDENCIES..."
-  list = $dependencies - $downloaded
+  list = $dependencies
   puts list
   list.each do |item|
     next unless extensions.include?(File.extname(item))
@@ -110,7 +142,12 @@ namespace :website do
     download(chuck_laser_path)
     download(mattress_pump_path)
     download(projects_path)
+    convert_links
     download_dependencies
+  end
+
+  task convert_links: [:environment] do
+    convert_links
   end
 
   desc "TODO"

@@ -2,20 +2,16 @@
 <html>
   <head>
     <title>Pascal</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta charset="utf-8"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "app_css" %>
-    <%= javascript_importmap_tags %>
     <%= javascript_include_tag "application", defer: true %>
   </head>
 
   <body>
-<% if controller_name == "home" && action_name == "index" %>
-<% else %>
-<% end %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <%= link_to_active 'Pascal Rainville', home_path, class: "navbar-brand" %>
