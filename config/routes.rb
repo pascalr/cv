@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     get 'laser', to: 'projects#chuck_laser', as: 'chuck_laser'
     get 'pump', to: 'projects#mattress_pump', as: 'mattress_pump'
     
+    get 'thailand', to: 'trips#thailand', as: 'thailand'
+    
+    resources 'trips', only: 'index'
     resources 'projects', only: 'index'
     get '/', to: "home#index", as: 'home'
   #end

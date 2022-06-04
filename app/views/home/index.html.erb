@@ -5,12 +5,10 @@
     <div>
       <h2>Bienvenue!</h2>
       <p>Vous trouverez sur mon site quelques-uns de mes projets personnels et de mes expériences de travail.</p>
-      <p>J'habite à Sherbrooke, QC, pas tant loin de la ferme familiale où j'ai grandi. À l'âge de 16 ans, j'ai commencé à travailler comme programmeur pour la compagnie Hopper où mon grand frère travaillais.</p>
-      <p>Je me suis ensuite cherché pendant plusieurs années, où j'ai voyagé, fait des jobines et fini mes études pré-universitaire en science de la nature.</p>
-      <p>Puis, j'ai enfin trouvé un domaine qui me correspondait bien: l'électromécanique. Je suis parti aux Saguenay-Lac-St-Jean pour obtenir mon diplôme en Électromécanique de systèmes automatisés.</p>
-      <p>J'ai travaillé quelques années dans mon domaine. Je voulais cependant approfondir mes connaissances. C'est pourquoi je me suis inscrit en génie mécanique à l'université de Sherbrooke.</p>
+      <p>J'habite à <b>Sherbrooke</b>, pas tant loin de la ferme familiale où j'ai grandi. À l'âge de 16 ans, j'ai commencé à travailler en <%= link_to "programmation", prog_path %> pour la compagnie <b>Hopper</b> où mon grand frère travaillais. Je me suis ensuite cherché pendant plusieurs années, où j'ai voyagé, fait des jobines et fini mes études pré-universitaire en <b>Science de la nature</b>.</p>
+      <p>Puis, j'ai enfin trouvé un domaine qui me correspondait bien: l'électromécanique. Je suis parti aux Saguenay-Lac-St-Jean pour obtenir mon diplôme en <b>Électromécanique de systèmes automatisés</b>. J'ai ensuite travaillé dans un atelier de réparation d'équipement de soudure (<b>Réparation J-F</b>) et pour une usine de mobilier de bureau (<b>Logiflex</b>).</p>
+      <p>Après avoir travailé quelques années dans mon domaine, je voulais toutefois approfondir mes connaissances. C'est pourquoi je me suis inscrit en <b>Génie mécanique</b> à l'Université de Sherbrooke. J'ai fait un an où j'ai appris à faire de la <%= link_to "conception", conception_path %>.</p>
+      <p>J'ai retourner dans mon domaine en travaillant pour Groupe Industrielle Interprovincial. Puis, avec la COVID, j'en ai profiter pour travailler sur des projets personnels principalement en <%= link_to "robotique", robot_path %> .</p>
     </div>
   </div>
-
-  <%= render partial: "home/employed_by" %>
 </div>

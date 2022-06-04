@@ -1,10 +1,8 @@
-Mettre en ligne.
+Load image voyage Thaïlande seulement en scrollant.
 
 Corriger le français.
 
 Faire une ligne du temps de mon vécu?
-
-Faire une section voyage? Avec des photos de voyage?
 
 PROJET: Head tracking
 PROJET: Tissus clé mécaniques
