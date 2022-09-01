@@ -1,14 +1,65 @@
 <div class="responsive-margins-lg">
 
-  <div class="section d-md-flex gap-30">
-    <%= image_tag '/photo.jpg', width: '400' %>
-    <div>
-      <h2>Bienvenue!</h2>
-      <p>Vous trouverez sur mon site quelques-uns de mes projets personnels et de mes expériences de travail.</p>
-      <p>J'habite à <b>Sherbrooke</b>, pas tant loin de la ferme familiale où j'ai grandi. À l'âge de 16 ans, j'ai commencé à travailler en <%= link_to "programmation", prog_path %> pour la compagnie <b>Hopper</b> où mon grand frère travaillais. Je me suis ensuite cherché pendant plusieurs années, où j'ai voyagé, fait des jobines et fini mes études préuniversitaires en <b>Science de la nature</b>.</p>
-      <p>Puis, j'ai enfin trouvé un domaine qui me correspondait bien: l'électromécanique. Je suis parti aux Saguenay-Lac-St-Jean pour obtenir mon diplôme en <b>Électromécanique de systèmes automatisés</b>. J'ai ensuite travaillé dans un atelier de réparation d'équipement de soudure (<b>Réparation J-F</b>) et pour une usine de mobilier de bureau (<b>Logiflex</b>).</p>
-      <p>Après avoir travaillé quelques années dans mon domaine, je voulais toutefois approfondir mes connaissances. C'est pourquoi je me suis inscrit en <b>Génie mécanique</b> à l'Université de Sherbrooke. J'ai fait un an où j'ai appris à faire de la <%= link_to "conception", conception_path %>.</p>
-      <p>J'ai retourner dans mon domaine en travaillant pour Groupe Industrielle Interprovincial. Puis, avec la COVID, j'en ai profiter pour travailler sur des projets personnels principalement en <%= link_to "robotique", robot_path %> .</p>
+  <%= image_tag '/visage.png', 'width': '420', style: 'margin: auto; display: block; max-width: 60vw;' %>
+  <br/>
+  <p style='width: 600px; max-width: 80%; margin: auto; font-family: IndieFlower; font-size: 1.5em;'><b>Hello</b>, I am Pascal, a self-taught <b>programmer</b> with varied interests, like <%= link_to "programming", prog_path %>, <%= link_to "robotics", robot_path %>, <%= link_to "travel", trips_path %>, <%= link_to "mechanical conception", conception_path %> and guitar!</p>
+  <br/>
+  <br/>
+  <br/>
+  
+  <h2>EXPÉRIENCE EN PROGRAMMATION</h2>
+
+  <div class='d-flex'>
+    <div style='width: 280px;'>
+      <%= image_tag '/rails-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
+      <b>Ruby on Rails</b><br/>
+      Expérience en programmation backend RESTfull, base de données et …
+    </div>
+    <div class='flex-grow-1'></div>
+    <div style='width: 280px;'>
+      <%= image_tag '/react-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
+      <b>React</b><br/>
+      Expérience en javascript, entre autres avec la librairie React.js.
+    </div>
+    <div class='flex-grow-1'></div>
+    <div style='width: 280px;'>
+      <%= image_tag '/css-html-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;', title: 'https://daphyre.deviantart.com/art/HTML5-Logos-and-Badges-380429526' %>
+      <b>CSS/HTML</b><br/>
+      Expérience en front end avec CSS et HTML.
     </div>
   </div>
+  <br/>
+  <br/>
+  https://daphyre.deviantart.com/art/HTML5-Logos-and-Badges-380429526
+  <br/>
+  <br/>
+  <br/>
+
+  <h2>EXPÉRIENCE PROFESSIONELLE</h2>
+
+  <div><b>PROGRAMMEUR FULL STACK</b></div>
+  <div style="color: grey;">HOPPER</div>
+  <ul>
+    <li>Programmer un système pour rechercher et analyser des millions de vols d'avions</li>
+    <li>Automatiser des tâches cruciales pour le fonctionnement du serveur</li>
+    <li>Maîtriser une multitude de programmes et des langages de programmation</li>
+  </ul>
+  
+  <div><b>ÉLECTROMÉCANICIEN</b></div>
+  <div style="color: grey;">GROUPE PPD UHMW</div>
+  <ul>
+    <li>S’assurer du bon fonctionnement d’une cellule robotisée</li>
+    <li>Diagnostiquer et modifier des automates programmables</li>
+    <li>Réparer des systèmes hydrauliques</li>
+  </ul>
+  
+  <div><b>ÉLECTROMÉCANICIEN</b></div>
+  <div style="color: grey;">LOGIFLEX</div>
+  <ul>
+    <li>Être le seul électromécanicien responsable de l’usine de soir et sur appel le tiers du temps</li>
+    <li>Diagnostiquer les troubles et remettre en fonction les machines dans le plus bref délai</li>
+    <li>Travailler en collaboration avec la production pour minimiser les temps d’arrêts</li>
+    <li>Lire et analyser des plans techniques</li>
+  </ul>
+
 </div>

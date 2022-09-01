@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def link_to_active(name, path, options={})
+  def link_to_active(name, path, options={}, &block)
     options[:class] += " active" if current_page?(path)
-    link_to name, path, options
+    link_to name, path, options, &block
   end
 
   def image_tag_with_credit(credit, img, args)

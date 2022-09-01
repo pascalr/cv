@@ -11118,6 +11118,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+@font-face {
+  font-family: IndieFlower;
+  src: url(fonts/IndieFlower-Regular.ttf);
+}
 body {
   margin: 0;
 }
@@ -11187,5 +11191,10 @@ img, video {
   .responsive-margins-lg {
     width: 100%;
     /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+@media screen and (max-width: 992px) {
+  body {
+    font-size: 0.8em;
   }
 }
