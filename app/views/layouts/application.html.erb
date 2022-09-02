@@ -18,18 +18,24 @@
           <%= image_tag '/visage_tiny.png', 'width': '36', class: 'd-inline-block align-text-middle', style: 'border: 1px solid #555; border-radius: 18px; margin-right: 2px;' %>
           Pascal Rainville
         <% end %>
-        <%= image_tag '/world.svg', 'width': '24' %>
-        EN
+        <% lang = in_english? ? :fr : :en %> 
+        <% url = url_for(locale: lang) %>
+        <div class="navbar-nav">
+          <%= link_to url, hreflang: lang, rel: 'alternate', class: 'nav-item nav-link' do %>
+            <%= image_tag '/world.svg', 'width': '24', class: 'd-inline-block align-text-middle' %>
+            <%= lang == :fr ? 'FR' : 'EN' %>
+          <% end %>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <div class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <%= link_to_active 'Programmation', prog_path, class: "nav-item nav-link" %>
-            <%= link_to_active 'Robotique', robot_path, class: "nav-item nav-link" %>
-            <%= link_to_active 'Conception', conception_path, class: "nav-item nav-link" %>
-            <%= link_to_active 'Projets', projects_path, class: "nav-item nav-link" %>
-            <%= link_to_active 'Voyages', trips_path, class: "nav-item nav-link" %>
+            <%= link_to_active tr(:navbar_prog), prog_path, class: "nav-item nav-link" %>
+            <%= link_to_active tr(:navbar_robot), robot_path, class: "nav-item nav-link" %>
+            <%= link_to_active tr(:navbar_conception), conception_path, class: "nav-item nav-link" %>
+            <%= link_to_active tr(:navbar_projects), projects_path, class: "nav-item nav-link" %>
+            <%= link_to_active tr(:navbar_trips), trips_path, class: "nav-item nav-link" %>
           </div>
         </div>
       </div>

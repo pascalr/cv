@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   #scope '/cv' do
+  scope '/:locale' do
     get 'robot', to: 'home#robot', as: 'robot'
     get 'prog', to: 'home#prog', as: 'prog'
     get 'conception', to: 'home#conception', as: 'conception'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     resources 'trips', only: 'index'
     resources 'projects', only: 'index'
     get '/', to: "home#index", as: 'home'
+  end
   #end
   root "home#index"
   #

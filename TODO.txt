@@ -1,3 +1,14 @@
+Je n'ai pas envie de tout traduire mon site. Simplement traduire la page d'acceuil. Sur les autres pages, ajouter un avertissement que le texte n'a pas encore été traduit en anglais.
+
+Mettre mes descriptions de job attrayante pour travailler en programmation.
+
+Scale les imaes ancien employeurs.
+
+Text pour les compétences que j'ai (Rails, React, HTML/CSS)
+
+Ajouter une deuxième rangée de compétences? C/C++ and Godot
+
+Traduire Toute la page d'acceuil en anglais.
 
 
 Page armoire de cuisine...

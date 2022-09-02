@@ -2,7 +2,9 @@
 
   <%= image_tag '/visage.png', 'width': '420', style: 'margin: auto; display: block; max-width: 60vw;' %>
   <br/>
-  <p style='width: 600px; max-width: 80%; margin: auto; font-family: IndieFlower; font-size: 1.5em;'><b>Hello</b>, I am Pascal, a self-taught <b>programmer</b> with varied interests, like <%= link_to "programming", prog_path %>, <%= link_to "robotics", robot_path %>, <%= link_to "travel", trips_path %>, <%= link_to "mechanical conception", conception_path %> and guitar!</p>
+  <p style='width: 600px; max-width: 80%; margin: auto; font-family: IndieFlower; font-size: 1.5em;'>
+    <%= tr :welcome_message %>
+  </p>
   
   <h2>EXPÉRIENCE EN PROGRAMMATION</h2>
 
@@ -23,6 +25,23 @@
       <%= image_tag '/css-html-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;', title: 'https://daphyre.deviantart.com/art/HTML5-Logos-and-Badges-380429526' %>
       <b>CSS/HTML</b><br/>
       Expérience en front end avec CSS et HTML.
+    </div>
+  </div>
+  <br/>
+  <div class='d-flex'>
+    <div style='width: 280px;'>
+      <%= image_tag '/cpp-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
+      <b>C/C++</b><br/>
+      Expérience en programmation backend RESTfull, base de données et …
+    </div>
+    <div class='flex-grow-1'></div>
+    <div style='width: 280px;'>
+      <%= image_tag '/godot-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
+      <b>Godot</b><br/>
+      Expérience en javascript, entre autres avec la librairie React.js.
+    </div>
+    <div class='flex-grow-1'></div>
+    <div style='width: 280px;'>
     </div>
   </div>
 
