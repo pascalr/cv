@@ -14,16 +14,16 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <%= link_to_active home_path, class: "navbar-brand" do %>
-          <%= image_tag '/visage_tiny.png', 'width': '36', class: 'd-inline-block align-text-middle', style: 'border: 1px solid #555; border-radius: 18px; margin-right: 2px;' %>
-          Pascal Rainville
-        <% end %>
-        <% lang = in_english? ? :fr : :en %> 
-        <% url = url_for(locale: lang) %>
-        <div class="navbar-nav">
+        <div class='d-flex'>
+          <%= link_to_active home_path, class: "navbar-brand" do %>
+            <%= image_tag '/visage_tiny.png', 'width': '36', class: 'd-inline-block align-text-middle', style: 'border: 1px solid #555; border-radius: 18px; margin-right: 2px;' %>
+            Pascal Rainville
+          <% end %>
+          <% lang = in_english? ? :fr : :en %> 
+          <% url = url_for(locale: lang) %>
           <%= link_to url, hreflang: lang, rel: 'alternate', class: 'nav-item nav-link' do %>
             <%= image_tag '/world.svg', 'width': '24', class: 'd-inline-block align-text-middle' %>
-            <%= lang == :fr ? 'FR' : 'EN' %>
+            <span style="color: rgba(0, 0, 0, 0.55);"><%= lang == :fr ? 'FR' : 'EN' %></span>
           <% end %>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
