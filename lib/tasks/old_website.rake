@@ -45,7 +45,7 @@ LOCALES = ["fr", "en"]
 #end
 
 def _fullpath(path)
-  path.start_with?('http') ? path : "http://localhost:3001#{path.start_with?('/') : path : '/'+path}"
+  path.start_with?('http') ? path : "http://localhost:3001#{path.start_with?('/') ? path : '/'+path}"
 end
 
 def _relative_path(path)
