@@ -8,7 +8,7 @@ $dependencies = Set.new
 LOCALES = ["fr", "en"]
 
 def _fullpath(path)
-  path.start_with?('http') ? path : "http://localhost:3001#{path.start_with?('/') : path : '/'+path}"
+  path.start_with?('http') ? path : "http://localhost:3001#{path.start_with?('/') ? path : '/'+path}"
 end
 
 def _relative_path(path)
@@ -26,8 +26,6 @@ def convert_links
   Dir.glob("#{OUT_DIR}/**/*.html") do |path|
     rel = File.dirname(path)[(OUT_DIR.length+1)..-1]
     depth = (rel.nil? || rel == '') ? 0 : rel.count('/')+1
-    puts rel
-    puts depth
     html = File.read(path)
     doc = Nokogiri::HTML5(html)
     links = doc.css 'a'
@@ -52,7 +50,6 @@ def convert_links
     end
     File.write(path, doc.to_html)
   end
-  puts "DEPENDENCIES: #{$dependencies}"
 end
 
 def _download_index(path)
@@ -83,8 +80,6 @@ def download_dependencies
 
   puts "DOWNLOADING DEPENDENCIES..."
   list = $dependencies
-  puts list
-  puts "WAS HERE!!!"
   list.each do |item|
     next unless extensions.include?(File.extname(item))
     _download(item)
