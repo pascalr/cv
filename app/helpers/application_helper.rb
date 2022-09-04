@@ -16,6 +16,21 @@ module ApplicationHelper
     return get_locale == :fr
   end
 
+  def timeline_item(date, title, item=nil)
+    @@is_left = true unless defined?(@@is_left)
+    r = ''
+    r += "<div class='timeline-item-"+(@@is_left ? 'left' : 'right')+"'>"
+    r += "  <div class='timeline-line'></div>"
+    r += "  <div class='timeline-dash'></div>"
+    r += "  <div class='timeline-desc'>"
+    r += "    <div><b>"+date+"</b></div>"
+    r += "    <div>"+title+"</div>"
+    r += "  </div>"
+    r += "</div>"
+    @@is_left = !@@is_left
+    return r.html_safe
+  end
+
   def image_tag_with_credit(credit, img, args)
     image_tag img, args.merge(title: 'Credit: '+credit)
     #content_tag do
@@ -58,6 +73,8 @@ module ApplicationHelper
       navbar_conception: 'Conception',
       navbar_projects: 'Projects',
       navbar_trips: 'Trips',
+      navbar_about: 'About',
+      navbar_contact: 'Contact',
       welcome_message: '<b>Hello</b>, I am Pascal, a self-taught <b>programmer</b> with varied interests, like ' + (link_to "programming", prog_path) + ', ' + (link_to "robotics", robot_path) + ', ' + (link_to "travel", trips_path) + ', ' + (link_to "mechanical conception", conception_path) + ' and guitar!',
       job_title_tld: 'MECHANICAL ENGINEERING INTERN',
       job_desc_tld_1: 'Design new parts and assemblies for a machine prototype',
@@ -96,6 +113,8 @@ module ApplicationHelper
       navbar_conception: 'Conception',
       navbar_projects: 'Projets',
       navbar_trips: 'Voyages',
+      navbar_about: 'À propops',
+      navbar_contact: 'Me contacter',
       welcome_message: "<b>Salut</b>, je m'appelle Pascal. Je suis un <b>programmeur</b> autodidacte avec de multiples intérêts, comme la " + (link_to "programmation", prog_path) + ', la ' + (link_to "robotique", robot_path) + ', le ' + (link_to "voyage", trips_path) + ', la ' + (link_to "conception mécanique", conception_path) + ' et la guitare!',
       job_title_tld: 'STAGIAIRE EN GÉNIE MÉCANIQUE',
       job_desc_tld_1: 'Concevoir de nouvelles pièces et assemblages pour une machine prototype',

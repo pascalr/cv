@@ -1,7 +1,47 @@
-<h2>Bienvenue!</h2>
-<p>Vous trouverez sur mon site quelques-uns de mes projets personnels et de mes expériences de travail.</p>
-<p>J'habite à <b>Sherbrooke</b>, pas tant loin de la ferme familiale où j'ai grandi. À l'âge de 16 ans, j'ai commencé à travailler en <%= link_to "programmation", prog_path %> pour la compagnie <b>Hopper</b> où mon grand frère travaillais. Je me suis ensuite cherché pendant plusieurs années, où j'ai voyagé, fait des jobines et fini mes études préuniversitaires en <b>Science de la nature</b>.</p>
-<p>Puis, j'ai enfin trouvé un domaine qui me correspondait bien: l'électromécanique. Je suis parti aux Saguenay-Lac-St-Jean pour obtenir mon diplôme en <b>Électromécanique de systèmes automatisés</b>. J'ai ensuite travaillé dans un atelier de réparation d'équipement de soudure (<b>Réparation J-F</b>) et pour une usine de mobilier de bureau (<b>Logiflex</b>).</p>
-<p>Après avoir travaillé quelques années dans mon domaine, je voulais toutefois approfondir mes connaissances. C'est pourquoi je me suis inscrit en <b>Génie mécanique</b> à l'Université de Sherbrooke. J'ai fait un an où j'ai appris à faire de la <%= link_to "conception", conception_path %>.</p>
-<p>J'ai retourner dans mon domaine en travaillant pour Groupe Industrielle Interprovincial. Puis, avec la COVID, j'en ai profiter pour travailler sur des projets personnels principalement en <%= link_to "robotique", robot_path %> .</p>
+<br/>
+<h1 style="text-align: center;">Ma ligne du temps professionelle</h1>
+<br/><br/>
 
+<div class='timeline'>
+  <div class="timeline-start"></div>
+  <%= timeline_item('Novembre 1993', 'Ma naissance', :timeline_birth) %>
+  <%= timeline_item('2006', 'Commencer à apprendre la programmation') %>
+  <%= timeline_item('Juin 2010', 'Stage: Hopper') %>
+  <%= timeline_item('Septembre 2010', 'Études: Cégep de Saint-Jean sur Richelieu', :timeline_cegep_01) %>
+  <%= timeline_item('Mai 2011', 'Emploi: Hopper') %>
+  <%= timeline_item('Mars 2012', 'Voyage: Californie') %>
+  <%= timeline_item('Septembre 2012', 'Études: Cégep de Sherbrooke, 3e session') %>
+  <%= timeline_item('Mars 2013', 'Voyage: Thaïlande') %>
+  <%= timeline_item('Avril 2013', 'Voyage: Cambodge') %>
+  <%= timeline_item('Mai 2013', 'Voyage: Vietnam') %>
+  <%= timeline_item('Juin 2013', 'Voyage: Chine') %>
+  <%= timeline_item('Juillet 2013', 'Voyage: Japon') %>
+  <%= timeline_item('Aout 2013', 'Voyage: Nouvelle-Zélande') %>
+  <%= timeline_item('Octobre 2013', 'Voyage: Italie et France') %>
+  <%= timeline_item('Novembre 2013', 'Voyage: Belgique et Pays-Bas') %>
+  <%= timeline_item('Janvier 2014', 'Études: Cégep de Sherbrooke, 4e session') %>
+  <%= timeline_item('Juin 2014', 'Emploi: Aménagement de sentiers pédestres') %>
+  <%= timeline_item('Septembre 2014', 'Voyage: Turquie et Bulgarie') %>
+  <%= timeline_item('Novembre 2014', 'Emploi: Neigiste') %>
+  <%= timeline_item('Janvier 2015', 'Études: Sociologie (2 semaines)') %>
+  <%= timeline_item('Février 2015', 'Emploi: Cuisinier Boston Pizza') %>
+  <%= timeline_item('Aout 2015', 'Études: Électromécanique de sysèmes automatisés') %>
+  <%= timeline_item('Novembre 2016', 'Stage: Pompes Saguenay') %>
+  <%= timeline_item('Mars 2017', 'Emploi: Réparation J-F') %>
+  <%= timeline_item('Décembre 2017', 'Emploi: Logiflex') %>
+  <%= timeline_item('Aout 2018', 'Études: Génie mécanique') %>
+  <%= timeline_item('Juin 2019', 'Stage: TLD') %>
+  <%= timeline_item('Décembre 2019', 'Emploi: Groupe mécanique Interprovincial') %>
+  <%= timeline_item('Février 2020', 'Projet: Robot de cuisine') %>
+  <%= timeline_item('Janvier 2021', "Études: Lancement d'une entreprise") %>
+  <%= timeline_item('Décembre 2021', "Emploi: PPD UHMW") %>
+</div>
+
+
+<!--
+<p>Vous trouverez sur mon site quelques-uns de mes projets personnels et de mes expériences de travail.</p>
+<p>J'habite à <b>Sherbrooke</b>, pas tant loin de la ferme familiale où j'ai grandi. À l'âge de 16 ans, j'ai commencé à travailler en <%# link_to "programmation", prog_path %> pour la compagnie <b>Hopper</b> où mon grand frère travaillais. Je me suis ensuite cherché pendant plusieurs années, où j'ai voyagé, fait des jobines et fini mes études préuniversitaires en <b>Science de la nature</b>.</p>
+<p>Puis, j'ai enfin trouvé un domaine qui me correspondait bien: l'électromécanique. Je suis parti aux Saguenay-Lac-St-Jean pour obtenir mon diplôme en <b>Électromécanique de systèmes automatisés</b>. J'ai ensuite travaillé dans un atelier de réparation d'équipement de soudure (<b>Réparation J-F</b>) et pour une usine de mobilier de bureau (<b>Logiflex</b>).</p>
+<p>Après avoir travaillé quelques années dans mon domaine, je voulais toutefois approfondir mes connaissances. C'est pourquoi je me suis inscrit en <b>Génie mécanique</b> à l'Université de Sherbrooke. J'ai fait un an où j'ai appris à faire de la <%# link_to "conception", conception_path %>.</p>
+<p>J'ai retourner dans mon domaine en travaillant pour Groupe Industrielle Interprovincial. Puis, avec la COVID, j'en ai profiter pour travailler sur des projets personnels principalement en <%# link_to "robotique", robot_path %> .</p>
+-->
