@@ -3,9 +3,46 @@ OUT_DIR = "docs"
 require 'set'
 require 'nokogiri'
   
+#$download_list ||= []
+  
 $dependencies = Set.new
     
+#LOCALES = ["fr-CA"]
 LOCALES = ["fr", "en"]
+
+#def add_download(path)
+#  puts "Adding path to download: #{path}"
+#  $download_list << "http://localhost:3001#{path}"
+#end
+
+#def execute_download
+#  puts "Executing the download for the download list"
+#  File.open("tmp/download-list", 'w') { |file| file.write($download_list.join("\n")) }
+#  # -e robots=off Download even if not allowed by robots.txt
+#  # -P prefix Download inside tmp directory
+#  # -p ?????
+#  # -nv no verbose
+#  system("wget -nv -e robots=off -p -k -P tmp -i tmp/download-list")
+#  #system("wget -q -e robots=off -p -P tmp -i tmp/download-list")
+#  move_files_without_extensions
+#  $download_list.clear
+#end
+
+#def move_files_without_extensions
+#
+#  puts "Moving the files to directories and index.html"
+#
+#  Dir.glob("#{OUT_DIR}/**/*") do |path|
+#    next if path.starts_with?("#{OUT_DIR}/images")
+#    next if path == '.' or path == '..'
+#    next unless File.extname(path).blank?
+#    next if File.directory?(path)
+#    tmp_dir_path = path+"-tmp"
+#    Dir.mkdir(tmp_dir_path)
+#    File.rename path, tmp_dir_path+"/index.html"
+#    File.rename tmp_dir_path, path
+#  end
+#end
 
 def _fullpath(path)
   path.start_with?('http') ? path : "http://localhost:3001#{path.start_with?('/') : path : '/'+path}"
@@ -56,7 +93,8 @@ def convert_links
 end
 
 def _download_index(path)
-  puts "Downloading page w/ html ext: "+_fullpath(path)
+  puts _fullpath(path)
+  puts "WAS THERE???"
   full = File.join(OUT_DIR, _relative_path(path))
   FileUtils.mkdir_p(full) unless File.directory?(full)
   system("wget #{_fullpath(path)} -q -O #{full}/index.html") # -q => quiet; -O => output file name; -k => relative file path
@@ -64,7 +102,8 @@ def _download_index(path)
 end
 
 def _download(path)
-  puts "Downloading item: "+_fullpath(path)
+  puts _fullpath(path)
+  puts "WAS THERE!!!"
   full = File.join(OUT_DIR, _relative_path(path))
   dir = File.dirname(full)
   FileUtils.mkdir_p(dir) unless File.directory?(dir)
@@ -126,5 +165,22 @@ namespace :website do
   task convert_links: [:environment] do
     convert_links
   end
+
+  #desc "TODO"
+  #task build_main: [:environment, :url_helpers] do
+
+  #  add_download("/cv")
+  #  execute_download
+
+  #  add_download(home_path)
+  #  add_download(robot_path)
+  #  add_download(prog_path)
+  #  add_download(conception_path)
+  #  add_download(cupboard_path)
+  #  add_download(chuck_laser_path)
+  #  add_download(mattress_pump_path)
+  #  add_download(projects_path)
+  #  execute_download
+  #end
 
 end
