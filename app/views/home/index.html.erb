@@ -6,25 +6,25 @@
     <%= tr :welcome_message %>
   </p>
   
-  <h2>EXPÉRIENCE EN PROGRAMMATION</h2>
+  <h2><%= tr(:title_prog) %></h2>
 
   <div class='d-flex'>
     <div style='width: 280px;'>
       <%= image_tag '/rails-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
       <b>Ruby on Rails</b><br/>
-      Expérience en programmation backend RESTfull, base de données et …
+      <%= tr(:exp_rails) %>
     </div>
     <div class='flex-grow-1'></div>
     <div style='width: 280px;'>
       <%= image_tag '/react-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
       <b>React</b><br/>
-      Expérience en javascript, entre autres avec la librairie React.js.
+      <%= tr(:exp_react) %>
     </div>
     <div class='flex-grow-1'></div>
     <div style='width: 280px;'>
       <%= image_tag '/css-html-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;', title: 'https://daphyre.deviantart.com/art/HTML5-Logos-and-Badges-380429526' %>
       <b>CSS/HTML</b><br/>
-      Expérience en front end avec CSS et HTML.
+      <%= tr(:exp_css) %>
     </div>
   </div>
   <br/>
@@ -32,64 +32,28 @@
     <div style='width: 280px;'>
       <%= image_tag '/cpp-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
       <b>C/C++</b><br/>
-      Expérience en programmation backend RESTfull, base de données et …
+      <%= tr(:exp_cpp) %>
     </div>
     <div class='flex-grow-1'></div>
     <div style='width: 280px;'>
       <%= image_tag '/godot-logo.png', 'height': '100', style: 'margin: auto; display: block; margin-bottom: 0.5em; max-height: 10vw;' %>
       <b>Godot</b><br/>
-      Expérience en javascript, entre autres avec la librairie React.js.
+      <%= tr(:exp_godot) %>
     </div>
     <div class='flex-grow-1'></div>
     <div style='width: 280px;'>
     </div>
   </div>
 
-  <h2>EXPÉRIENCE PROFESSIONELLE</h2>
+  <h2><%= tr(:title_exp) %></h2>
 
-  <div><b>PROGRAMMEUR FULL STACK</b></div>
-  <div style="color: grey;">HOPPER</div>
-  <ul>
-    <li>Programmer un système pour rechercher et analyser des millions de vols d'avions</li>
-    <li>Automatiser des tâches cruciales pour le fonctionnement du serveur</li>
-    <li>Maîtriser une multitude de programmes et des langages de programmation</li>
-  </ul>
-  
-  <div><b>ÉLECTROMÉCANICIEN</b></div>
-  <div style="color: grey;">GROUPE PPD UHMW</div>
-  <ul>
-    <li>S’assurer du bon fonctionnement d’une cellule robotisée</li>
-    <li>Diagnostiquer et modifier des automates programmables</li>
-    <li>Réparer des systèmes hydrauliques</li>
-  </ul>
-  
-  <div><b>ÉLECTROMÉCANICIEN</b></div>
-  <div style="color: grey;">LOGIFLEX</div>
-  <ul>
-    <li>Être le seul électromécanicien responsable de l’usine de soir et sur appel le tiers du temps</li>
-    <li>Diagnostiquer les troubles et remettre en fonction les machines dans le plus bref délai</li>
-    <li>Travailler en collaboration avec la production pour minimiser les temps d’arrêts</li>
-    <li>Lire et analyser des plans techniques</li>
-  </ul>
-  
-  <div><b><%= tr(:job_title_tld) %></b></div>
-  <div style="color: grey;">TLD CANADA</div>
-  <ul>
-    <li><%= tr(:job_desc_tld_1) %></li>
-    <li><%= tr(:job_desc_tld_2) %></li>
-    <li><%= tr(:job_desc_tld_3) %></li>
-  </ul>
-  
-  <div><b><%= tr(:job_title_farm) %></b></div>
-  <div style="color: grey;"><%= tr(:job_name_farm) %></div>
-  <ul>
-    <li><%= tr(:job_desc_farm_1) %></li>
-    <li><%= tr(:job_desc_farm_2) %></li>
-    <li><%= tr(:job_desc_farm_3) %></li>
-  </ul>
+  <%= print_job(tr(:job_title_hopper), 'HOPPER', [tr(:job_desc_hopper_1), tr(:job_desc_hopper_2), tr(:job_desc_hopper_3)]) %>
+  <%= print_job(tr(:job_title_ppd), tr(:job_name_ppd), [tr(:job_desc_ppd_1), tr(:job_desc_ppd_2), tr(:job_desc_ppd_3)]) %>
+  <%= print_job(tr(:job_title_tld), 'TLD CANADA', [tr(:job_desc_tld_1), tr(:job_desc_tld_2), tr(:job_desc_tld_3)]) %>
+  <%= print_job(tr(:job_title_farm), tr(:job_name_farm), [tr(:job_desc_farm_1), tr(:job_desc_farm_2), tr(:job_desc_farm_3)]) %>
   
   <div>
-    <h2>ANCIEN EMPLOYEURS</h2>
+    <h2><%= tr(:title_employers) %></h2>
     <div class="logos">
       <%= image_tag '/hopper.jpeg' %>
       <%= image_tag '/tld.jpeg' %>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'prog', to: 'home#prog', as: 'prog'
     get 'conception', to: 'home#conception', as: 'conception'
     get 'armoire', to: 'home#cupboard', as: 'cupboard'
+    get 'contact', to: 'home#contact', as: 'contact'
 
     get 'laser', to: 'projects#chuck_laser', as: 'chuck_laser'
     get 'pump', to: 'projects#mattress_pump', as: 'mattress_pump'

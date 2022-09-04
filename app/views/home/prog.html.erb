@@ -1,5 +1,9 @@
 <%= image_tag '/prog_banner.jpg', width: '100%', style: "border-bottom: 2px solid #555;" %>
 
+<% if in_english? %>
+  <%= render partial: 'translation_missing' %>
+<% end %>
+
 <br><br>
 
 <div class="responsive-margins-lg">

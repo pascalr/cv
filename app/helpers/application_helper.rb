@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def image_tag_with_credit(credit, img, args)
-    image_tag img, args
+    image_tag img, args.merge(title: 'Credit: '+credit)
     #content_tag do
     #end
     #<% raise "Missing variant in image partial" unless local_assigns[:variant] %>
@@ -34,6 +34,18 @@ module ApplicationHelper
     #    </div>
     #  <% end %>
     #<
+  end
+
+  def print_job(title, name, descriptions)
+    r = ''
+    r += '<div><b>'+title+'</b></div>'
+    r += '<div style="color: grey;">'+name+'</div>'
+    r += '<ul>'
+    descriptions.each do |desc|
+      r += '<li>'+desc+'</li>'
+    end
+    r += '</ul>'
+    r.html_safe
   end
 
   # Give the translated text for the key given
@@ -56,7 +68,25 @@ module ApplicationHelper
       job_desc_farm_1: 'Repair and maintain farming equipment',
       job_desc_farm_2: 'Build farm buildings integrally',
       job_desc_farm_3: 'Drive tractors and operate farming machinery',
-
+      job_title_hopper: 'FULL STACK PROGRAMMER',
+      job_desc_hopper_1: "Program a system to search and analyze millions of flights",
+      job_desc_hopper_2: 'Automate crucial tasks for the server',
+      job_desc_hopper_3: 'Master many programming languages, librairies and programs',
+      job_name_ppd: 'GROUPE PPD UHMW',
+      job_title_ppd: 'ELECTROMECHANIC',
+      job_desc_ppd_1: 'Make sur a robot cell works properly',
+      job_desc_ppd_2: 'Troubleshoot and modify PLCs (Programming logic controllers)',
+      job_desc_ppd_3: 'Fix mechanical and hydraulic systems',
+      exp_rails: 'Programming backend RESTful, handling databases, MVC framework.',
+      exp_react: 'Programming UI in javascript, with vanilla javascript and React.js library.',
+      exp_css: 'Design front end with CSS and HTML. Familiar with Boostrap library.',
+      exp_cpp: 'Programming low level C/C++. Coding for Arduino micro-controller and video game conception.',
+      exp_godot: 'Programming a robotic arm simulation with the Godot library.',
+      title_prog: 'PROGRAMMING EXPERIENCE',
+      title_exp: 'PROFESSIONAL EXPERIENCE',
+      title_employers: 'PREVIOUS EMPLOYERS',
+      contact_text: "For any questions or comments, you can contact me at the email address below:",
+      contact_title: "Get in touch",
     }
 
     # FRENCH
@@ -76,6 +106,25 @@ module ApplicationHelper
       job_desc_farm_1: 'Réparer et entretenir des équipements agricoles',
       job_desc_farm_2: 'Construire des bâtiments de ferme intégralement',
       job_desc_farm_3: 'Conduire des tracteurs et opérer de la machinerie',
+      job_title_hopper: 'PROGRAMMEUR FULL STACK',
+      job_desc_hopper_1: "Programmer un système pour rechercher et analyser des millions de vols d'avions",
+      job_desc_hopper_2: 'Automatiser des tâches cruciales pour le fonctionnement du serveur',
+      job_desc_hopper_3: 'Maîtriser une multitude de programmes et des langages de programmation',
+      job_name_ppd: 'GROUPE PPD UHMW',
+      job_title_ppd: 'ÉLECTROMÉCANICIEN',
+      job_desc_ppd_1: 'S’assurer du bon fonctionnement d’une cellule robotisée',
+      job_desc_ppd_2: 'Diagnostiquer et modifier des automates programmables',
+      job_desc_ppd_3: 'Réparer des systèmes hydrauliques',
+      exp_rails: 'Programmation backend RESTful, gestion de base de données, framework MVC.',
+      exp_react: 'Programmation de UI en javascript, en simple javascript et avec la librairie React.js.',
+      exp_css: 'Design front end avec CSS et HTML. Familiarité avec la librairie Bootstrap.',
+      exp_cpp: 'Programmation de bas niveau en C/C++. Code pour micro-controlleur Arduino et conception de jeux vidéo.',
+      exp_godot: "Programmation d'une simulation de bras robotique avec la librairie Godot.",
+      title_prog: 'EXPÉRIENCE EN PROGRAMMATION',
+      title_exp: 'EXPÉRIENCE PROFESSIONELLE',
+      title_employers: 'ANCIEN EMPLOYEURS',
+      contact_text: "Pour toutes questions ou commentaires, vous pouvez me rejoindre à l'addresse courielle suivante:",
+      contact_title: "Entrer en contact",
     }
 
     text = in_english? ? english[key.to_sym] : french[key.to_sym]

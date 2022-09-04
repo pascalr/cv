@@ -1,5 +1,9 @@
 <%= image_tag '/kuka_2.jpg', width: '100%' %>
 
+<% if in_english? %>
+  <%= render partial: 'translation_missing' %>
+<% end %>
+
 <br><br>
 
 <div class="responsive-margins-lg">

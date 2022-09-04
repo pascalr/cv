@@ -1,12 +1,16 @@
 <%= image_tag '/conception.jpg', width: '100%' %>
 
+<% if in_english? %>
+  <%= render partial: 'translation_missing' %>
+<% end %>
+
 <br><br>
 
 <div class="responsive-margins-lg">
   <%= render partial: "projects/cupboard" %>
   
   <div class="section d-md-flex gap-30">
-    <%= image_tag_with_credit 'https://wiki.freecadweb.org/images/f/f4/Drawing_extraction.png', '/drawing.png', width: '600' %>
+    <%= image_tag_with_credit 'https://wiki.freecadweb.org/images/f/f4/Drawing_extraction.png', '/drawing.png', style: 'width: 600px; height: auto;' %>
     <div>
       <h2>Expérience: Modélisation 3d</h2>
       <p>Modélisation 3d à l'aide des logiciels Solidworks et Freecad.</p>

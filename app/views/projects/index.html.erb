@@ -1,3 +1,7 @@
+<% if in_english? %>
+  <%= render partial: 'home/translation_missing' %>
+<% end %>
+
 <div class="responsive-margins-lg">
 
   <%= render partial: "projects/recipe_website" %>

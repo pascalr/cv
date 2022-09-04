@@ -36,10 +36,13 @@
             <%= link_to_active tr(:navbar_conception), conception_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:navbar_projects), projects_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:navbar_trips), trips_path, class: "nav-item nav-link" %>
+            <%= link_to_active 'Contact', contact_path, class: "nav-item nav-link" %>
           </div>
         </div>
       </div>
     </nav>
-    <%= yield %>
+    <div id='root'>
+      <%= yield %>
+    </div>
   </body>
 </html>

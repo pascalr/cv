@@ -7,4 +7,6 @@ class HomeController < ApplicationController
   end
   def conception
   end
+  def contact
+  end
 end

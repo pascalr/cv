@@ -3,10 +3,6 @@
   src: url(fonts/IndieFlower-Regular.ttf);
 }
 
-body {
-  margin: 0;
-}
-
 h2 {
   margin-bottom: 0.8em;
 }
@@ -16,6 +12,7 @@ h2 {
 }
 
 .section {
+  align-items: flex-start;
   padding-top: 4em;
   padding-bottom: 4em;
 }
@@ -76,7 +73,7 @@ img, video {
   }
 }
 @media screen and (max-width: 992px) {
-  body {
+  #root {
     font-size: 0.8em;
   }
 }
