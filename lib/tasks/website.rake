@@ -110,6 +110,8 @@ namespace :website do
       download_short_url(projects_path(locale: locale))
       download_short_url(about_path(locale: locale))
       download_short_url(contact_path(locale: locale))
+      download_short_url(trips_path(locale: locale))
+      download_short_url(thailand_path(locale: locale))
     end
     convert_links
     download_dependencies
