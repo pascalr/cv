@@ -45,7 +45,7 @@ LOCALES = ["fr", "en"]
 #end
 
 def _fullpath(path)
-  path.start_with?('http') ? path : "http://localhost:3001#{path}"
+  path.start_with?('http') ? path : "http://localhost:3001#{path.start_with?('/') : path : '/'+path}"
 end
 
 def _relative_path(path)
@@ -94,7 +94,8 @@ end
 
 def _download_index(path)
   puts _fullpath(path)
-  full = "#{OUT_DIR}#{_relative_path(path)}"
+  puts "WAS THERE???"
+  full = File.join(OUT_DIR, _relative_path(path))
   FileUtils.mkdir_p(full) unless File.directory?(full)
   system("wget #{_fullpath(path)} -q -O #{full}/index.html") # -q => quiet; -O => output file name; -k => relative file path
   return full
@@ -102,7 +103,8 @@ end
 
 def _download(path)
   puts _fullpath(path)
-  full = "#{OUT_DIR}#{_relative_path(path)}"
+  puts "WAS THERE!!!"
+  full = File.join(OUT_DIR, _relative_path(path))
   dir = File.dirname(full)
   FileUtils.mkdir_p(dir) unless File.directory?(dir)
   system("wget #{_fullpath(path)} -q -O #{full}") # -q => quiet; -O => output file name; -k => relative file path
@@ -121,6 +123,7 @@ def download_dependencies
   puts "DOWNLOADING DEPENDENCIES..."
   list = $dependencies
   puts list
+  puts "WAS HERE!!!"
   list.each do |item|
     next unless extensions.include?(File.extname(item))
     _download(item)
