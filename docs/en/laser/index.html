@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head>
+    <title>Pascal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    
+
+    <link rel="stylesheet" href="../../assets/app_css-a47f9f97b45b604858581a5366f9f9413204624d354b1c3b1ca14ef0d92a85c2.css">
+    <script src="../../assets/application-dc6b2123822d4d75d545c58e8cd82bdb9ab69dcf065d5fdccd3f20f1d53e6630.js" defer="defer"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="d-flex">
+          <a class="navbar-brand" href="../../en">
+            <img width="36" class="d-inline-block align-text-middle" style="border: 1px solid #555; border-radius: 18px; margin-right: 2px;" src="../../visage_tiny.png">
+            Pascal Rainville
+</a>          <a hreflang="fr" rel="alternate" class="nav-item nav-link" href="../../fr/laser">
+            <img width="24" class="d-inline-block align-text-middle" src="../../world.svg">
+            <span style="color: rgba(0, 0, 0, 0.55);">FR</span>
+</a>        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <a class="nav-item nav-link" href="../../en/prog">Programming</a>
+            <a class="nav-item nav-link" href="../../en/robot">Robotics</a>
+            <a class="nav-item nav-link" href="../../en/conception">Conception</a>
+            <a class="nav-item nav-link" href="../../en/projects">Projects</a>
+            <a class="nav-item nav-link" href="../../en/trips">Trips</a>
+            <a class="nav-item nav-link" href="../../en/about">About</a>
+            <a class="nav-item nav-link" href="../../en/contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="root">
+      <div class="responsive-margins-lg">
+  
+  <div style="height: 1em;"></div>
+
+  <img width="500" class="float-md-end" src="../../chuck_laser_03.jpg">
+  <h1>Projet: Guide laser pour perceuse à colonne</h1>
+  <p>Un guide laser imprimé en 3d qui s'installe sur une perceuse en colonne.</p>
+  <p>Lorsque la perceuse tourne, le pointeur laser tourne aussi. À vitesse suffisamment élevé, le point lumineux devient une cercle. Cela permet d'aligner rapidement pour percer un trou.</p>
+  <p>C'est un prototype pas trop fonctionnel.</p>
+  <div style="clear: both;"></div>
+  
+  <h2>Contexte</h2>
+  <p>Mon objectif était de percer un trou en plein centre d'une tige pleine ronde. La bonne manière à faire serait d'utiliser un tour, mais malheureusement je n'y avait pas accès et c'est quand même dispendieux comme machine-outil.</p>
+  <p>Je me suis rappelé d'une série de vidéos sur youtube intitulé «Building prototypes» par Dan Gelbart. C'est vraiment génial ces vidéos! J'ai énormément appris dans chacune des 18 vidéos de la série.</p>
+  <p>J'ai décidé d'essayer de patenter, avec ma nouvelle imprimante 3d, cet outil comme présenté dans une ses vidéos (<a href="../../https://www.youtube.com/watch?v=otSjut1iGGk">https://www.youtube.com/watch?v=otSjut1iGGk</a>).</p>
+
+  <h2>Conception</h2>
+  <img width="500" src="../../chuck_laser_01.jpg"><br><br>
+  
+  <p>La conception est assez simple. Il y a plusieurs années, j'avais acheté un crayon laser de quelqu'un qui en vendait dans la rue. J'ai dévissé le crayon et j'ai récupéré le pointeur laser.</p>
+
+  <p>J'ai conçu dans le logiciel FreeCAD le modèle 3d à imprimer. Il intègre deux supports à batteries, un support pour le pointeur et un trou pour insérer un micro-interrupteur.</p>
+
+  <a href="../../laser_center_finder.zip" download="">Télécharger les fichiers FreeCAD</a><br><br>
+
+  <p>Les supports à batteries ont un léger angle pour que la batterie s'insère et reste en position. Pour faire le contact avec les pôles, j'ai utilisé des petits bouts de tôle d'acier que j'ai coupé et plié. J'ai soudé à l'étain des fils électrique sur les contacts. Les deux batteries sont en série pour avoir le bon voltage.</p>
+
+  <p>L'appareil tient en place à l'aide d'une bande d'acier qui fait le tour du mandrin et est verrouillé en place à l'aide d'une vis et d'un écrou.</p>
+
+  <h2>Résultat</h2>
+  <img width="500" src="../../chuck_laser_02.jpg"><br><br>
+
+  <p>Le résultat était un peu décevant. Je ne me souviens pas trop pourquoi exactement... Je pense que mon laser n'était pas assez lumineux et/ou le point était trop large en diamètre.</p>
+
+  <p>Une perceuse à colonne n'est pas conçu pour faire des trous de précisions. Il faudrait vraiment une fraiseuse qui offre beaucoup plus de rigidité pour avoir une meilleure précision.</p>
+
+  <p>Avec du recul, je me dis qu'il aurait fallu qu'au moins j'utilise un forêt à centrer avant de percer mon trou.</p>
+</div>
+
+    </div>
+  
+
+</body></html>

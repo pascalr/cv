@@ -3,46 +3,46 @@ OUT_DIR = "docs"
 require 'set'
 require 'nokogiri'
   
-$download_list ||= []
+#$download_list ||= []
   
 $dependencies = Set.new
     
-LOCALES = ["fr-CA"]
-#LOCALES = ["fr", "en"]
+#LOCALES = ["fr-CA"]
+LOCALES = ["fr", "en"]
 
-def add_download(path)
-  puts "Adding path to download: #{path}"
-  $download_list << "http://localhost:3001#{path}"
-end
+#def add_download(path)
+#  puts "Adding path to download: #{path}"
+#  $download_list << "http://localhost:3001#{path}"
+#end
 
-def execute_download
-  puts "Executing the download for the download list"
-  File.open("tmp/download-list", 'w') { |file| file.write($download_list.join("\n")) }
-  # -e robots=off Download even if not allowed by robots.txt
-  # -P prefix Download inside tmp directory
-  # -p ?????
-  # -nv no verbose
-  system("wget -nv -e robots=off -p -k -P tmp -i tmp/download-list")
-  #system("wget -q -e robots=off -p -P tmp -i tmp/download-list")
-  move_files_without_extensions
-  $download_list.clear
-end
+#def execute_download
+#  puts "Executing the download for the download list"
+#  File.open("tmp/download-list", 'w') { |file| file.write($download_list.join("\n")) }
+#  # -e robots=off Download even if not allowed by robots.txt
+#  # -P prefix Download inside tmp directory
+#  # -p ?????
+#  # -nv no verbose
+#  system("wget -nv -e robots=off -p -k -P tmp -i tmp/download-list")
+#  #system("wget -q -e robots=off -p -P tmp -i tmp/download-list")
+#  move_files_without_extensions
+#  $download_list.clear
+#end
 
-def move_files_without_extensions
-
-  puts "Moving the files to directories and index.html"
-
-  Dir.glob("#{OUT_DIR}/**/*") do |path|
-    next if path.starts_with?("#{OUT_DIR}/images")
-    next if path == '.' or path == '..'
-    next unless File.extname(path).blank?
-    next if File.directory?(path)
-    tmp_dir_path = path+"-tmp"
-    Dir.mkdir(tmp_dir_path)
-    File.rename path, tmp_dir_path+"/index.html"
-    File.rename tmp_dir_path, path
-  end
-end
+#def move_files_without_extensions
+#
+#  puts "Moving the files to directories and index.html"
+#
+#  Dir.glob("#{OUT_DIR}/**/*") do |path|
+#    next if path.starts_with?("#{OUT_DIR}/images")
+#    next if path == '.' or path == '..'
+#    next unless File.extname(path).blank?
+#    next if File.directory?(path)
+#    tmp_dir_path = path+"-tmp"
+#    Dir.mkdir(tmp_dir_path)
+#    File.rename path, tmp_dir_path+"/index.html"
+#    File.rename tmp_dir_path, path
+#  end
+#end
 
 def _fullpath(path)
   path.start_with?('http') ? path : "http://localhost:3001#{path}"
@@ -56,7 +56,7 @@ end
 def convert_link(link, depth)
   $dependencies << link
   base = link.start_with?('/') ? link[1..-1] : link
-  return depth == 0 ? base : '.'*depth+'./'+base
+  return depth == 0 ? base : '../'*depth+base
 end
 def convert_links
   puts "CONVERTING LINKS"
@@ -141,37 +141,43 @@ namespace :website do
   end
 
   task build_custom: [:environment, :url_helpers] do 
-    download(home_path)
-    download(robot_path)
-    download(prog_path)
-    download(conception_path)
-    download(cupboard_path)
-    download(chuck_laser_path)
-    download(mattress_pump_path)
-    download(projects_path)
-    convert_links
-    download_dependencies
+    download(root_path)
+    download('/fonts/IndieFlower-Regular.ttf') # Ugly patch. The issue is that the dependency is inside another dependency (the stylesheet), so it is not downloaded.
+    LOCALES.each do |locale|
+      download(home_path(locale: locale))
+      download(robot_path(locale: locale))
+      download(prog_path(locale: locale))
+      download(conception_path(locale: locale))
+      download(cupboard_path(locale: locale))
+      download(chuck_laser_path(locale: locale))
+      download(mattress_pump_path(locale: locale))
+      download(projects_path(locale: locale))
+      download(about_path(locale: locale))
+      download(contact_path(locale: locale))
+      convert_links
+      download_dependencies
+    end
   end
 
   task convert_links: [:environment] do
     convert_links
   end
 
-  desc "TODO"
-  task build_main: [:environment, :url_helpers] do
+  #desc "TODO"
+  #task build_main: [:environment, :url_helpers] do
 
-    add_download("/cv")
-    execute_download
+  #  add_download("/cv")
+  #  execute_download
 
-    add_download(home_path)
-    add_download(robot_path)
-    add_download(prog_path)
-    add_download(conception_path)
-    add_download(cupboard_path)
-    add_download(chuck_laser_path)
-    add_download(mattress_pump_path)
-    add_download(projects_path)
-    execute_download
-  end
+  #  add_download(home_path)
+  #  add_download(robot_path)
+  #  add_download(prog_path)
+  #  add_download(conception_path)
+  #  add_download(cupboard_path)
+  #  add_download(chuck_laser_path)
+  #  add_download(mattress_pump_path)
+  #  add_download(projects_path)
+  #  execute_download
+  #end
 
 end
