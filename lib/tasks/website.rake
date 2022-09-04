@@ -52,7 +52,9 @@ def convert_links
   end
 end
 
-def _download_index(path)
+# The url will be without an extension. Instead of /blah.html, it's going to be /blah.
+# In order to do this, create a folder and add an index.html file. => /blah/index.html
+def download_short_url(path)
   puts "Downloading page w/ html ext: "+_fullpath(path)
   full = File.join(OUT_DIR, _relative_path(path))
   FileUtils.mkdir_p(full) unless File.directory?(full)
@@ -60,18 +62,13 @@ def _download_index(path)
   return full
 end
 
-def _download(path)
+# Download the url with the extension. /blah.html
+def download_with_ext(path)
   puts "Downloading item: "+_fullpath(path)
   full = File.join(OUT_DIR, _relative_path(path))
   dir = File.dirname(full)
   FileUtils.mkdir_p(dir) unless File.directory?(dir)
   system("wget #{_fullpath(path)} -q -O #{full}") # -q => quiet; -O => output file name; -k => relative file path
-end
-
-def download(path)
-  full = _download_index(path)
-  # sudo apt-get install html-xml-utils
-  #links = `hxwls #{full}/index.html`.split("\n")
 end
 
 def download_dependencies
@@ -82,7 +79,7 @@ def download_dependencies
   list = $dependencies
   list.each do |item|
     next unless extensions.include?(File.extname(item))
-    _download(item)
+    download_with_ext(item)
   end
 end
 
@@ -100,19 +97,19 @@ namespace :website do
   end
 
   task build_custom: [:environment, :url_helpers] do 
-    download(root_path)
-    download('/fonts/IndieFlower-Regular.ttf') # Ugly patch. The issue is that the dependency is inside another dependency (the stylesheet), so it is not downloaded.
+    download_short_url(root_path)
+    download_with_ext('/fonts/IndieFlower-Regular.ttf') # Ugly patch. The issue is that the dependency is inside another dependency (the stylesheet), so it is not downloaded.
     LOCALES.each do |locale|
-      download(home_path(locale: locale))
-      download(robot_path(locale: locale))
-      download(prog_path(locale: locale))
-      download(conception_path(locale: locale))
-      download(cupboard_path(locale: locale))
-      download(chuck_laser_path(locale: locale))
-      download(mattress_pump_path(locale: locale))
-      download(projects_path(locale: locale))
-      download(about_path(locale: locale))
-      download(contact_path(locale: locale))
+      download_short_url(home_path(locale: locale))
+      download_short_url(robot_path(locale: locale))
+      download_short_url(prog_path(locale: locale))
+      download_short_url(conception_path(locale: locale))
+      download_short_url(cupboard_path(locale: locale))
+      download_short_url(chuck_laser_path(locale: locale))
+      download_short_url(mattress_pump_path(locale: locale))
+      download_short_url(projects_path(locale: locale))
+      download_short_url(about_path(locale: locale))
+      download_short_url(contact_path(locale: locale))
     end
     convert_links
     download_dependencies
