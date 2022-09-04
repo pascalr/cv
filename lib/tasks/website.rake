@@ -113,9 +113,9 @@ namespace :website do
       download(projects_path(locale: locale))
       download(about_path(locale: locale))
       download(contact_path(locale: locale))
-      convert_links
-      download_dependencies
     end
+    convert_links
+    download_dependencies
   end
 
   task convert_links: [:environment] do
