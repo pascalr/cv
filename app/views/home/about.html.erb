@@ -1,10 +1,14 @@
+<% if in_english? %>
+  <%= render partial: 'translation_missing' %>
+<% end %>
+
 <br/>
 <h1 style="text-align: center;">Ma ligne du temps professionelle</h1>
 <br/><br/>
 
 <div class='timeline'>
   <div class="timeline-start"></div>
-  <%= timeline_item('Novembre 1993', 'Ma naissance', :timeline_birth) %>
+  <%= timeline_item('1993', 'Ma naissance', :timeline_birth) %>
   <%= timeline_item('2006', 'Commencer à apprendre la programmation') %>
   <%= timeline_item('Juin 2010', 'Stage: Hopper') %>
   <%= timeline_item('Septembre 2010', 'Études: Cégep de Saint-Jean sur Richelieu', :timeline_cegep_01) %>

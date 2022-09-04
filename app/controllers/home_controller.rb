@@ -10,5 +10,6 @@ class HomeController < ApplicationController
   def contact
   end
   def about
+    @is_left = true
   end
 end

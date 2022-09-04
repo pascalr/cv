@@ -11136,8 +11136,8 @@ textarea.form-control-lg {
 
 .timeline-line {
   box-sizing: content-box;
-  width: calc(50vw - 2px);
-  border-right: 4px solid black;
+  width: calc(50vw - 4px);
+  border-right: 8px solid black;
 }
 
 .timeline-item-left {
@@ -11149,7 +11149,7 @@ textarea.form-control-lg {
 }
 
 .timeline-desc {
-  width: 150px;
+  width: 250px;
   padding-top: 1em;
   padding-bottom: 1em;
   flex-shrink: 9999;
@@ -11157,7 +11157,7 @@ textarea.form-control-lg {
 }
 
 .timeline-item-left .timeline-desc {
-  transform: translate(-250px);
+  transform: translate(calc(-100% - 100px));
 }
 
 .timeline-dash {

@@ -17,9 +17,9 @@ module ApplicationHelper
   end
 
   def timeline_item(date, title, item=nil)
-    @@is_left = true unless defined?(@@is_left)
+    @is_left = true unless defined?(@is_left)
     r = ''
-    r += "<div class='timeline-item-"+(@@is_left ? 'left' : 'right')+"'>"
+    r += "<div class='timeline-item-"+(@is_left ? 'left' : 'right')+"'>"
     r += "  <div class='timeline-line'></div>"
     r += "  <div class='timeline-dash'></div>"
     r += "  <div class='timeline-desc'>"
@@ -27,7 +27,7 @@ module ApplicationHelper
     r += "    <div>"+title+"</div>"
     r += "  </div>"
     r += "</div>"
-    @@is_left = !@@is_left
+    @is_left = !@is_left
     return r.html_safe
   end
 
@@ -85,7 +85,7 @@ module ApplicationHelper
       job_desc_farm_1: 'Repair and maintain farming equipment',
       job_desc_farm_2: 'Build farm buildings integrally',
       job_desc_farm_3: 'Drive tractors and operate farming machinery',
-      job_title_hopper: 'FULL STACK PROGRAMMER',
+      job_title_hopper: 'FULL STACK DEVELOPER',
       job_desc_hopper_1: "Program a system to search and analyze millions of flights",
       job_desc_hopper_2: 'Automate crucial tasks for the server',
       job_desc_hopper_3: 'Master many programming languages, librairies and programs',
@@ -97,13 +97,14 @@ module ApplicationHelper
       exp_rails: 'Programming backend RESTful, handling databases, MVC framework.',
       exp_react: 'Programming UI in javascript, with vanilla javascript and React.js library.',
       exp_css: 'Design front end with CSS and HTML. Familiar with Boostrap library.',
-      exp_cpp: 'Programming low level C/C++. Coding for Arduino micro-controller and video game conception.',
+      exp_cpp: 'Programming low level C/C++. Coding for Arduino microcontroller and video game conception.',
       exp_godot: 'Programming a robotic arm simulation with the Godot library.',
       title_prog: 'PROGRAMMING EXPERIENCE',
       title_exp: 'PROFESSIONAL EXPERIENCE',
       title_employers: 'PREVIOUS EMPLOYERS',
       contact_text: "For any questions or comments, you can contact me at the email address below:",
       contact_title: "Get in touch",
+      btn_copy: "Copy",
     }
 
     # FRENCH
@@ -113,7 +114,7 @@ module ApplicationHelper
       navbar_conception: 'Conception',
       navbar_projects: 'Projets',
       navbar_trips: 'Voyages',
-      navbar_about: 'À propops',
+      navbar_about: 'À propos',
       navbar_contact: 'Me contacter',
       welcome_message: "<b>Salut</b>, je m'appelle Pascal. Je suis un <b>programmeur</b> autodidacte avec de multiples intérêts, comme la " + (link_to "programmation", prog_path) + ', la ' + (link_to "robotique", robot_path) + ', le ' + (link_to "voyage", trips_path) + ', la ' + (link_to "conception mécanique", conception_path) + ' et la guitare!',
       job_title_tld: 'STAGIAIRE EN GÉNIE MÉCANIQUE',
@@ -137,13 +138,14 @@ module ApplicationHelper
       exp_rails: 'Programmation backend RESTful, gestion de base de données, framework MVC.',
       exp_react: 'Programmation de UI en javascript, en simple javascript et avec la librairie React.js.',
       exp_css: 'Design front end avec CSS et HTML. Familiarité avec la librairie Bootstrap.',
-      exp_cpp: 'Programmation de bas niveau en C/C++. Code pour micro-controlleur Arduino et conception de jeux vidéo.',
+      exp_cpp: 'Programmation de bas niveau en C/C++. Code pour microcontrôleur Arduino et conception de jeux vidéo.',
       exp_godot: "Programmation d'une simulation de bras robotique avec la librairie Godot.",
       title_prog: 'EXPÉRIENCE EN PROGRAMMATION',
-      title_exp: 'EXPÉRIENCE PROFESSIONELLE',
+      title_exp: 'EXPÉRIENCE PROFESSIONNELLE',
       title_employers: 'ANCIEN EMPLOYEURS',
-      contact_text: "Pour toutes questions ou commentaires, vous pouvez me rejoindre à l'addresse courielle suivante:",
+      contact_text: "Pour toutes questions ou commentaires, vous pouvez me rejoindre à l'adresse courriel suivante:",
       contact_title: "Entrer en contact",
+      btn_copy: "Copier",
     }
 
     text = in_english? ? english[key.to_sym] : french[key.to_sym]
