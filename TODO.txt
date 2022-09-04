@@ -1,11 +1,6 @@
 Ajouter des images et un peu de texte à ma ligne du temps
 Rendre ma ligne du temps plus belle
 
-Dans la page ABOUT (À PROPOS), mettre le timeline de ma vie.
-
-Corriger les fautes d'orthographe.
-
-
 Page armoire de cuisine...
 
 Load image voyage Thaïlande seulement en scrollant.
