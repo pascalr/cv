@@ -142,7 +142,7 @@ module ApplicationHelper
       exp_godot: "Programmation d'une simulation de bras robotique avec le logiciel Godot.",
       title_prog: 'EXPÉRIENCE EN PROGRAMMATION',
       title_exp: 'EXPÉRIENCE PROFESSIONNELLE',
-      title_employers: 'ANCIEN EMPLOYEURS',
+      title_employers: 'ANCIENS EMPLOYEURS',
       contact_text: "Pour toutes questions ou commentaires, vous pouvez me rejoindre à l'adresse courriel suivante:",
       contact_title: "Entrer en contact",
       btn_copy: "Copier",
