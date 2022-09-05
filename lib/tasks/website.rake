@@ -1,4 +1,5 @@
 OUT_DIR = "docs"
+WEBSITE_PREFIX = "cv"
 
 require 'set'
 require 'nokogiri'
@@ -21,35 +22,47 @@ def convert_link(link, depth)
   base = link.start_with?('/') ? link[1..-1] : link
   return depth == 0 ? base : '../'*depth+base
 end
-def convert_links
-  puts "CONVERTING LINKS"
+def convert_html_links
+  puts "CONVERTING HTML LINKS"
   Dir.glob("#{OUT_DIR}/**/*.html") do |path|
-    rel = File.dirname(path)[(OUT_DIR.length+1)..-1]
-    depth = (rel.nil? || rel == '') ? 0 : rel.count('/')+1
-    html = File.read(path)
-    doc = Nokogiri::HTML5(html)
-    links = doc.css 'a'
-    links.each do |link|
-      link['href'] = convert_link(link['href'], depth)
-    end
-    links = doc.css 'link'
-    links.each do |link|
-      link['href'] = convert_link(link['href'], depth)
-    end
-    imgs = doc.css 'img'
-    imgs.each do |img|
-      img['src'] = convert_link(img['src'], depth)
-    end
-    videos = doc.css 'video'
-    videos.each do |video|
-      video['src'] = convert_link(video['src'], depth)
-    end
-    scripts = doc.css 'script'
-    scripts.each do |script|
-      script['src'] = convert_link(script['src'], depth)
-    end
-    File.write(path, doc.to_html)
+    convert_html_file_links(path)
   end
+end
+def convert_css_links
+  puts "CONVERTING CSS LINKS"
+  Dir.glob("#{OUT_DIR}/**/*.css") do |path|
+    puts "Found css file: " + path
+    text = File.read(path)
+    updated = text.gsub(/url\(\//, "url(\/"+WEBSITE_PREFIX+"/")
+    File.open(path, "w") {|file| file.puts updated }
+  end
+end
+def convert_html_file_links(path)
+  rel = File.dirname(path)[(OUT_DIR.length+1)..-1]
+  depth = (rel.nil? || rel == '') ? 0 : rel.count('/')+1
+  html = File.read(path)
+  doc = Nokogiri::HTML5(html)
+  links = doc.css 'a'
+  links.each do |link|
+    link['href'] = convert_link(link['href'], depth)
+  end
+  links = doc.css 'link'
+  links.each do |link|
+    link['href'] = convert_link(link['href'], depth)
+  end
+  imgs = doc.css 'img'
+  imgs.each do |img|
+    img['src'] = convert_link(img['src'], depth)
+  end
+  videos = doc.css 'video'
+  videos.each do |video|
+    video['src'] = convert_link(video['src'], depth)
+  end
+  scripts = doc.css 'script'
+  scripts.each do |script|
+    script['src'] = convert_link(script['src'], depth)
+  end
+  File.write(path, doc.to_html)
 end
 
 # The url will be without an extension. Instead of /blah.html, it's going to be /blah.
@@ -113,12 +126,13 @@ namespace :website do
       download_short_url(trips_path(locale: locale))
       download_short_url(thailand_path(locale: locale))
     end
-    convert_links
+    convert_html_links
     download_dependencies
+    convert_css_links
   end
 
   task convert_links: [:environment] do
-    convert_links
+    convert_html_links
   end
 
 end
