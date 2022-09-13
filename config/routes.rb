@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   #scope '/cv' do
   scope '/:locale' do
+    get 'front-end', to: 'frontend#index', as: 'frontend'
     get 'robot', to: 'home#robot', as: 'robot'
     get 'prog', to: 'home#prog', as: 'prog'
     get 'conception', to: 'home#conception', as: 'conception'
