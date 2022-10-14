@@ -11196,10 +11196,10 @@ h2, .h2 {
 
 .section:nth-child(even) {
   background-color: #f7f5ff;
-  margin-left: -12.25vw;
-  margin-right: -12.25vw;
-  padding-left: 12.25vw;
-  padding-right: 12.25vw;
+  margin-left: -12.125vw;
+  margin-right: -12.125vw;
+  padding-left: 12.125vw;
+  padding-right: 12.125vw;
 }
 
 .section:nth-child(even) > *:first-child {
@@ -11244,6 +11244,14 @@ img, video {
   .responsive-margins-lg {
     width: 97%;
     /* The width is 100%, when the viewport is 800px or smaller */
+  }
+
+  .section:nth-child(even) {
+    background-color: #f7f5ff;
+    margin-left: -1.5vw;
+    margin-right: -1.5vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
   }
 }
 @media screen and (max-width: 992px) {
