@@ -1,3 +1,7 @@
+body {
+  margin: 0 0.5em;
+}
+
 @font-face {
   font-family: IndieFlower;
   src: url(fonts/IndieFlower-Regular.ttf);
@@ -18,10 +22,7 @@
   width: calc(50vw - 4px);
   border-right: 8px solid black;
 }
-.timeline-item-left {
-  display: flex;
-}
-.timeline-item-right {
+.timeline-item-left, .timeline-item-right {
   display: flex;
 }
 .timeline-desc {

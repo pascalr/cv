@@ -11118,6 +11118,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  margin: 0 0.5em;
+}
+
 @font-face {
   font-family: IndieFlower;
   src: url(fonts/IndieFlower-Regular.ttf);
@@ -11140,11 +11144,7 @@ textarea.form-control-lg {
   border-right: 8px solid black;
 }
 
-.timeline-item-left {
-  display: flex;
-}
-
-.timeline-item-right {
+.timeline-item-left, .timeline-item-right {
   display: flex;
 }
 
