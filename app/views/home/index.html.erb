@@ -44,6 +44,13 @@
     <div style='width: 280px;'>
     </div>
   </div>
+  
+  <h2>PORTFOLIO FRONT-END</h2>
+
+  <div class='d-flex flex-wrap'>
+    <%= render partial: 'portfolio_item', locals: {label: 'hedacuisine.com', url: 'https://www.hedacuisine.com'} %>
+    <%= render partial: 'portfolio_item', locals: {label: 'pascalr.github.io/cv', url: 'https://pascalr.github.io/cv'} %>
+  </div>
 
   <h2><%= tr(:title_exp) %></h2>
 
