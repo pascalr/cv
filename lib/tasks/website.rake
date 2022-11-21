@@ -113,6 +113,7 @@ namespace :website do
     download_short_url(root_path)
     download_with_ext('/fonts/IndieFlower-Regular.ttf') # Ugly patch. The issue is that the dependency is inside another dependency (the stylesheet), so it is not downloaded.
     LOCALES.each do |locale|
+      download_short_url(no_portfolio_path(locale: locale))
       download_short_url(home_path(locale: locale))
       download_short_url(robot_path(locale: locale))
       download_short_url(prog_path(locale: locale))
