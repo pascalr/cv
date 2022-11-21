@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
   def index
+    @render_portfolio = true
+  end
+  def no_portfolio
+    @render_portfolio = false
+    render 'index'
   end
   def robot
   end

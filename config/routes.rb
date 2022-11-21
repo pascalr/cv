@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'front-end', to: 'frontend#index', as: 'frontend'
     get 'robot', to: 'home#robot', as: 'robot'
     get 'prog', to: 'home#prog', as: 'prog'
+    get 'no_portfolio', to: 'home#no_portfolio', as: 'no_portfolio'
     get 'conception', to: 'home#conception', as: 'conception'
     get 'armoire', to: 'home#cupboard', as: 'cupboard'
     get 'contact', to: 'home#contact', as: 'contact'
