@@ -11122,6 +11122,11 @@ textarea.form-control-lg {
   font-family: IndieFlower;
   src: url(/cv/fonts/IndieFlower-Regular.ttf);
 }
+@media screen and (min-width: 400px) {
+  .d-xsm-inline {
+    display: inline !important;
+  }
+}
 .timeline {
   font-size: 1.4em;
 }

@@ -17,7 +17,7 @@
         <div class='d-flex'>
           <%= link_to_active home_path, class: "navbar-brand" do %>
             <%= image_tag '/visage_tiny.png', 'width': '36', class: 'd-inline-block align-text-middle', style: 'border: 1px solid #555; border-radius: 18px; margin-right: 2px;' %>
-            Pascal Rainville
+            <span class='d-none d-xsm-inline'>Pascal Rainville</span>
           <% end %>
           <% lang = in_english? ? :fr : :en %> 
           <% url = url_for(locale: lang) %>

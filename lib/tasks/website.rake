@@ -62,6 +62,10 @@ def convert_html_file_links(path)
   scripts.each do |script|
     script['src'] = convert_link(script['src'], depth)
   end
+  iframes = doc.css 'iframe'
+  iframes.each do |iframe|
+    iframe['src'] = convert_link(iframe['src'], depth)
+  end
   File.write(path, doc.to_html)
 end
 
