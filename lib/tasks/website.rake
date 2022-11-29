@@ -18,6 +18,7 @@ end
 
 # Make the link relative instead of absolute.
 def convert_link(link, depth)
+  return link if (link.start_with?('http'))
   $dependencies << link
   base = link.start_with?('/') ? link[1..-1] : link
   return depth == 0 ? base : '../'*depth+base
