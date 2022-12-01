@@ -65,14 +65,15 @@
   <%= print_job(tr(:job_title_tld), 'TLD CANADA', [tr(:job_desc_tld_1), tr(:job_desc_tld_2), tr(:job_desc_tld_3)]) %>
   <%= print_job(tr(:job_title_farm), tr(:job_name_farm), [tr(:job_desc_farm_1), tr(:job_desc_farm_2), tr(:job_desc_farm_3)]) %>
   
-  <div>
-    <h2><%= tr(:title_employers) %></h2>
-    <div class="logos">
-      <%= image_tag '/hopper.jpeg' %>
-      <%= image_tag '/tld.jpeg' %>
-      <%= image_tag '/logiflex.jpg' %>
-      <%= image_tag '/interprovincial.jpeg' %>
-      <%= image_tag '/ppd.png' %>
-    </div>
+  <h2><%= tr(:title_employers) %></h2>
+</div>
+<div style='overflow: hidden'>
+  <div class="logos">
+    <%= render partial: 'home/logos' %>
+    <%= render partial: 'home/logos' %>
+    <%= render partial: 'home/logos' %>
+    <%= render partial: 'home/logos' %>
+    <%= render partial: 'home/logos' %>
+    <%= render partial: 'home/logos' %>
   </div>
 </div>

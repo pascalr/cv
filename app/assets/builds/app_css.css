@@ -11187,16 +11187,38 @@ h2, .h2 {
   margin-top: 2em;
 }
 
-.section {
-  align-items: flex-start;
-  padding-top: 4em;
-  padding-bottom: 4em;
+.logos {
+  animation: infiniteloop 15s linear infinite;
+  white-space: nowrap;
+  font-size: 0;
 }
 
 .logos img {
   width: 240px;
-  max-width: 18vw;
-  mix-blend-mode: multiply;
+}
+
+@keyframes infiniteloop {
+  from {
+    transform: translateX(0);
+    width: 100%;
+  }
+  to {
+    transform: translateX(-1200px);
+    width: 200%;
+  }
+}
+@keyframes infiniteloopLoop {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+.section {
+  align-items: flex-start;
+  padding-top: 4em;
+  padding-bottom: 4em;
 }
 
 .section:nth-child(even) {
