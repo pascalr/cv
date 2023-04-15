@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let variation_cool = parseFloat(document.getElementById('variation_cool').value)
     let variation_heat = parseFloat(document.getElementById('variation_heat').value)
     let duree = parseFloat(document.getElementById('duree').value)
-    let interval = parseFloat(document.getElementById('interval').value)
     let input = parseFloat(document.getElementById('input').value)
     let pc = parseFloat(document.getElementById('pc').value)
     let nb_pt = parseFloat(document.getElementById('nb_pt').value)
@@ -133,10 +132,10 @@ document.addEventListener("DOMContentLoaded", function() {
         out = scale(pv, pc-dead/2, bias, pc-p/2-dead/2, 0)
       }
       outs.push(out)
-      if (out > bias) {
-        bias = Math.min(bias + integral * d_t, 100)
+      if (pv > pc) {
+        bias = Math.min(bias + integral*d_t*scale(pv, pc+dead/2, 0, pc+dead/2+reset/2, 1), 100)
       } else {
-        bias = Math.max(bias - integral * d_t, 0)
+        bias = Math.max(bias - integral*d_t*scale(pv, pc-dead/2-reset/2, 1, pc-dead/2, 0), 0)
       }
       biases.push(bias)
     }
