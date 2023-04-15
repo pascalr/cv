@@ -10,17 +10,29 @@
 
   <h2>Guide pratique d'un PID hvac</h2>
 
-  <p>P (proportionel): Si un contrôleur est gérer en proportionel seulement et qu'il vaut 0, alors l'output sera soit 0% ou 100% (ou 50% si bande morte).</p>
+  <p>P (proportionel): Si un contrôleur est gérer en proportionel seulement et qu'il vaut 0, alors l'output sera soit 0% ou 100% (ou 50% si bande morte). En augmentant la bande proportionnel, tu deviens plus lent à réagir, mais tu augmentes la stabilité du système. Pour setter la bande proportionnelle, on suggère de premièrement déterminer à quel point est-ce que c'est permis de baisser. Par exemple, dans une pièce, tu veux que le chauffage soit au maximum si tu est 1 degré C en dessous du point de consigne. Tu multiplies cette valeur par 2. Donc, une bande proportionnelle de 2 dans ce cas.</p>
+  <p>Recommendations</p>
+  <ul>
+    <li>Mixed air damper: 20 deg C</li>
+    <li>Heating coil valve: 20 deg C</li>
+    <li>Supply air static pressure: 2 in wc</li>
+    <li>Température de pièce: 2 deg C</li>
+    <li>Variable speed pumping: 30 psi</li>
+  </ul>
   <p>I (intégral): La partie intégrale fait varier le bias dans le temps.</p>
   <p>D (dérivé): La partie dérivé sert à diminuer les effets de changements de variation rapide. Dans un système cvac, ce n'est pas nécessaire puisque les changements se font lentement.</p>
 
-  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP). Théorie: La bande morte sert à prévenir l'overshoot. Si ton système est lent à réagir, tu veux arrêter plus tôt que prévu. Je pense que ce n'est pas très bon d'utiliser une bande morte. C'est mieux de simplement faire un DoEvery 15 s sur la modulation des valves pour éviter que les moteurs tournent toujours. Le problème est que si le système réagit rapidement, il va se stabiliser autour du PC + Dead band.</p>
-  <p>Reset band: ?????. Rule of thumb: 1/4 de l'intégrale</p>
+  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP). Eux ils disent que ça sert à éviter l'usure des actuateurs, bearings et linkages, mais je n'y crois pas vraiment... Théorie: La bande morte sert à prévenir l'overshoot. Si ton système est lent à réagir, tu veux arrêter plus tôt que prévu. Je pense que ce n'est pas très bon d'utiliser une bande morte. C'est mieux de simplement faire un DoEvery 15 s sur la modulation des valves pour éviter que les moteurs tournent toujours. Le problème est que si le système réagit rapidement, il va se stabiliser autour du PC + Dead band.</p>
+  <p>Reset band: Diminue proportionnellement l'effet de l'intégrale en se rapprochant de PC. Rule of thumb: 25% à 50% de la bande proportionnelle</p>
   <p>Bias: Quand l'entrée (PV) est égal à la consigne (SP), la valeur de l'output est égal au bias.</p>
 
-  <p>TODO: Rajouter l'image du graphique avec les valeurs.</p>
+  <p>Attention: si le output change plus rapidement que l'entrée, le système ne peut pas être stable.</p>
   
   <h2>Simulation</h2>
+
+  <p>TODO: Rajouter une valeur de délais de réaction.</p>
+
+  <p>TODO: Vérifier est-ce que le dead band diminue réellement le nombre de fois que l'output change? Est-ce que ça diminue réellement l'usure?</p>
 
 <style>
   input {
@@ -30,7 +42,7 @@
 </style>
 
   P: <input type="text" id="p" value="1.0"></input><br/>
-  I (%/s): <input type="text" id="i" value="1.0"></input><br/>
+  I (%/min): <input type="text" id="i" value="1.0"></input><br/>
   Bande morte: <input type="text" id="dead" value="0.2"></input><br/>
   Reset band: <input type="text" id="reset" value="0"></input><br/>
   Bias: <input type="text" id="bias" value="50"></input><br/>
@@ -39,10 +51,10 @@
   Entrée initiale: <input type="text" id="input", value="20"></input><br/>
   Consigne: <input type="text" id="pc" value="21"></input><br/>
   Nombre de points: <input type="text" id="nb_pt" value="200"></input><br/>
-  Interval calcul (s): <input type="text" id="interval_calcul" value="0.1"></input><br/>
-  Variation normale: <input type="text" id="variation" value="0.1"></input><br/>
-  Variation chauffage: <input type="text" id="variation_heat" value="0.2"></input><br/>
-  Variation climatisation: <input type="text" id="variation_cool" value="-0.2"></input><br/>
+  Durée (min): <input type="text" id="duree" value="60"></input><br/>
+  Variation normale (°C/min): <input type="text" id="variation" value="0.1"></input><br/>
+  Variation chauffage (°C/min): <input type="text" id="variation_heat" value="0.2"></input><br/>
+  Variation climatisation (°C/min): <input type="text" id="variation_cool" value="-0.2"></input><br/>
   Interval variation (s): <input type="text" id="interval" value="1"></input><br/>
 
   <br/>
@@ -50,7 +62,7 @@
   <br/>
   <b>Résultat</b><br/>
 
-  <!--<div style="width: 800px;"><canvas id="courbe"></canvas></div>-->
+  <div style="width: 500px;"><canvas id="courbe"></canvas></div>
   <div style="width: 800px;"><canvas id="graph"></canvas></div>
   <div style="width: 800px;"><canvas id="graph-output"></canvas></div>
 

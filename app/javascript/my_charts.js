@@ -22,7 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('graph'),
     {
       type: 'line',
-      data: {}
+      data: {},
+      options: {
+        plugins:{
+          title: {
+            display: true,
+            text: 'Température'
+          },
+        },
+      }
     }
   );
 
@@ -30,7 +38,52 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('graph-output'),
     {
       type: 'line',
-      data: {}
+      data: {},
+      options: {
+        plugins:{
+          title: {
+            display: true,
+            text: 'Sortie'
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: 'min'
+            }
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: '%'
+            },
+            suggestedMin: 0,
+            suggestedMax: 100
+          }
+        }
+      }
+    }
+  );
+
+  let courbe = new Chart(
+    document.getElementById('courbe'),
+    {
+      type: 'line',
+      data: {},
+      options: {
+        plugins:{
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Courbe'
+          },
+        },
+      }
     }
   );
 
@@ -44,12 +97,24 @@ document.addEventListener("DOMContentLoaded", function() {
     let variation = parseFloat(document.getElementById('variation').value)
     let variation_cool = parseFloat(document.getElementById('variation_cool').value)
     let variation_heat = parseFloat(document.getElementById('variation_heat').value)
+    let duree = parseFloat(document.getElementById('duree').value)
     let interval = parseFloat(document.getElementById('interval').value)
     let input = parseFloat(document.getElementById('input').value)
     let pc = parseFloat(document.getElementById('pc').value)
     let nb_pt = parseFloat(document.getElementById('nb_pt').value)
-    let interval_calcul = parseFloat(document.getElementById('interval_calcul').value)
-    let k = interval_calcul / interval
+    let d_t = duree/nb_pt // delta t
+
+    let xs = [pc-dead/2-p, pc-dead/2-p/2, pc-dead/2, pc, pc+dead/2, pc+dead/2+p/2, pc+dead/2+p]
+    let ys = [0, 0, bias, bias, bias, 100, 100]
+    courbe.data = {
+      labels: xs,
+      datasets: [
+        {
+          data: ys,
+        },
+      ]
+    }
+    courbe.update()
 
     const pvs = []
     const outs = []
@@ -58,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let pv = input
     let out = bias
     for (let i = 0; i < nb_pt; i++) {
-      pv += variation*k + variation_cool*k*scale(out, 50, 0, 100, 1) + variation_heat*k*scale(out, 0, 1, 50, 0)
+      pv += variation*d_t + variation_cool*d_t*scale(out, 50, 0, 100, 1) + variation_heat*d_t*scale(out, 0, 1, 50, 0)
       pvs.push(pv)
       if (Math.abs(pv-pc)<dead/2) {
         out = bias
@@ -69,15 +134,15 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       outs.push(out)
       if (out > bias) {
-        bias = Math.min(bias + integral * interval_calcul, 100)
+        bias = Math.min(bias + integral * d_t, 100)
       } else {
-        bias = Math.max(bias - integral * interval_calcul, 0)
+        bias = Math.max(bias - integral * d_t, 0)
       }
       biases.push(bias)
     }
   
     graph.data = {
-      labels: pvs.map((e,i) => (interval_calcul*i).toFixed(2)),
+      labels: pvs.map((e,i) => (d_t*i).toFixed(2)),
       datasets: [
         {
           label: 'Entrée',
@@ -95,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     graphOutput.data = {
-      labels: outs.map((e,i) => (interval_calcul*i).toFixed(2)),
+      labels: outs.map((e,i) => (d_t*i).toFixed(2)),
       datasets: [
         {
           label: 'Output',
