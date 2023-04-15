@@ -1,7 +1,20 @@
 
 // TODO: Optimize and only import what is needed
 import Chart from 'chart.js/auto' // OPTIMIZE: Don't import everything?
-import * as Utils from 'chart.js/helpers';
+
+function scale(input, inputMin, outputMin, inputMax, outputMax) {
+  var scaledInput = (input - inputMin) / (inputMax - inputMin);
+  var scaledOutput = scaledInput * (outputMax - outputMin) + outputMin;
+  var min = Math.min(outputMin, outputMax)
+  var max = Math.max(outputMin, outputMax)
+
+  if (scaledOutput > max) {
+    return max
+  } else if (scaledOutput < min) {
+    return min
+  }
+  return scaledOutput;
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -20,16 +33,24 @@ document.addEventListener("DOMContentLoaded", function() {
     let pc = parseFloat(document.getElementById('pc').value)
     let nb_pt = parseFloat(document.getElementById('nb_pt').value)
     let interval_calcul = parseFloat(document.getElementById('interval_calcul').value)
+    let k = interval_calcul / interval
 
     const pvs = []
     const outs = []
     console.log(nb_pt)
+    let pv = input
+    let out = bias
     for (let i = 0; i < nb_pt; i++) {
-      const temps = interval_calcul * i
-      const nb_variation = Math.floor(temps / interval)
-      const pv = input+(nb_variation*variation)
+      pv += variation*k + variation_cool*k*scale(out, 50, 0, 100, 1) + variation_heat*k*scale(out, 0, 1, 50, 0)
       pvs.push(pv)
-      const out = bias
+      if (Math.abs(pv-pc)<dead/2) {
+        out = bias
+      }
+      if (pv < pc - dead/2) {
+        out = 0
+      } else if (pv > pc + dead/2) {
+        out = 100
+      }
       outs.push(out)
     }
   
@@ -65,6 +86,16 @@ document.addEventListener("DOMContentLoaded", function() {
             {
               label: 'Output',
               data: outs,
+              pointStyle: false,
+            },
+            {
+              label: 'Cooling',
+              data: outs.map(out => scale(out, 50, 0, 100, 100)),
+              pointStyle: false,
+            },
+            {
+              label: 'Heating',
+              data: outs.map(out => scale(out, 0, 100, 50, 0)),
               pointStyle: false,
             }
           ]
