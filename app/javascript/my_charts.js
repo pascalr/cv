@@ -18,7 +18,23 @@ function scale(input, inputMin, outputMin, inputMax, outputMax) {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  document.getElementById('runSimulBtn').addEventListener('click', () => {
+  let graph = new Chart(
+    document.getElementById('graph'),
+    {
+      type: 'line',
+      data: {}
+    }
+  );
+
+  let graphOutput = new Chart(
+    document.getElementById('graph-output'),
+    {
+      type: 'line',
+      data: {}
+    }
+  );
+
+  function runSimul() {
 
     let p = parseFloat(document.getElementById('p').value)
     let integral = parseFloat(document.getElementById('i').value)
@@ -60,61 +76,54 @@ document.addEventListener("DOMContentLoaded", function() {
       biases.push(bias)
     }
   
-    new Chart(
-      document.getElementById('graph'),
-      {
-        type: 'line',
-        data: {
-          labels: pvs.map((e,i) => (interval_calcul*i).toFixed(2)),
-          datasets: [
-            {
-              label: 'Entrée',
-              data: pvs,
-              pointStyle: false,
-            },
-            {
-              label: 'Consigne',
-              data: pvs.map(i => pc),
-              pointStyle: false,
-            },
-          ]
+    graph.data = {
+      labels: pvs.map((e,i) => (interval_calcul*i).toFixed(2)),
+      datasets: [
+        {
+          label: 'Entrée',
+          data: pvs,
+          pointStyle: false,
+        },
+        {
+          label: 'Consigne',
+          data: pvs.map(i => pc),
+          pointStyle: false,
+        },
+      ]
+    }
+    graph.update()
+
+
+    graphOutput.data = {
+      labels: outs.map((e,i) => (interval_calcul*i).toFixed(2)),
+      datasets: [
+        {
+          label: 'Output',
+          data: outs,
+          pointStyle: false,
+        },
+        {
+          label: 'Bias',
+          data: biases,
+          pointStyle: false,
+        },
+        {
+          label: 'Cooling',
+          data: outs.map(out => scale(out, 50, 0, 100, 100)),
+          pointStyle: false,
+        },
+        {
+          label: 'Heating',
+          data: outs.map(out => scale(out, 0, 100, 50, 0)),
+          pointStyle: false,
         }
-      }
-    );
+      ]
+    }
+    graphOutput.update()
 
-    new Chart(
-      document.getElementById('graph-output'),
-      {
-        type: 'line',
-        data: {
-          labels: outs.map((e,i) => (interval_calcul*i).toFixed(2)),
-          datasets: [
-            {
-              label: 'Output',
-              data: outs,
-              pointStyle: false,
-            },
-            {
-              label: 'Bias',
-              data: biases,
-              pointStyle: false,
-            },
-            {
-              label: 'Cooling',
-              data: outs.map(out => scale(out, 50, 0, 100, 100)),
-              pointStyle: false,
-            },
-            {
-              label: 'Heating',
-              data: outs.map(out => scale(out, 0, 100, 50, 0)),
-              pointStyle: false,
-            }
-          ]
-        }
-      }
-    );
+  }
 
-
-  }, false)
+  runSimul()
+  document.getElementById('runSimulBtn').addEventListener('click', runSimul, false)
 
 });

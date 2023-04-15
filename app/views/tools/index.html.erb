@@ -14,7 +14,7 @@
   <p>I (intégral): La partie intégrale fait varier le bias dans le temps.</p>
   <p>D (dérivé): La partie dérivé sert à diminuer les effets de changements de variation rapide. Dans un système cvac, ce n'est pas nécessaire puisque les changements se font lentement.</p>
 
-  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP), </p>
+  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP). Théorie: La bande morte sert à prévenir l'overshoot. Si ton système est lent à réagir, tu veux arrêter plus tôt que prévu. Je pense que ce n'est pas très bon d'utiliser une bande morte. C'est mieux de simplement faire un DoEvery 15 s sur la modulation des valves pour éviter que les moteurs tournent toujours. Le problème est que si le système réagit rapidement, il va se stabiliser autour du PC + Dead band.</p>
   <p>Reset band: ?????. Rule of thumb: 1/4 de l'intégrale</p>
   <p>Bias: Quand l'entrée (PV) est égal à la consigne (SP), la valeur de l'output est égal au bias.</p>
 
