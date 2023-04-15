@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     get 'pump', to: 'projects#mattress_pump', as: 'mattress_pump'
     
     get 'thailand', to: 'trips#thailand', as: 'thailand'
+
+    get 'trips', to: redirect('https://pascalr.github.io/voyage/')
     
-    resources 'trips', only: 'index'
     resources 'projects', only: 'index'
+    resources 'tools', only: 'index'
     get '/', to: "home#index", as: 'home'
   end
   #end

@@ -1,0 +1,63 @@
+<%= javascript_include_tag "my_charts", defer: true %>
+
+<% if in_english? %>
+  <%= render partial: 'home/translation_missing' %>
+<% end %>
+
+<div class="responsive-margins-lg">
+  
+  <h1>Outils</h1>
+
+  <h2>Guide pratique d'un PID hvac</h2>
+
+  <p>P (proportionel): Si un contrôleur est gérer en proportionel seulement et qu'il vaut 0, alors l'output sera soit 0% ou 100% (ou 50% si bande morte).</p>
+  <p>I (intégral): La partie intégrale fait varier le bias dans le temps.</p>
+  <p>D (dérivé): La partie dérivé sert à diminuer les effets de changements de variation rapide. Dans un système cvac, ce n'est pas nécessaire puisque les changements se font lentement.</p>
+
+  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP), </p>
+  <p>Reset band: ?????. Rule of thumb: 1/4 de l'intégrale</p>
+  <p>Bias: Quand l'entrée (PV) est égal à la consigne (SP), la valeur de l'output est égal au bias.</p>
+
+  <p>TODO: Rajouter l'image du graphique avec les valeurs.</p>
+  
+  <h2>Simulation</h2>
+
+<style>
+  input {
+    border: none;
+    border-bottom: 1px solid black;
+  }
+</style>
+
+  P: <input type="text" id="p" value="0"></input><br/>
+  I: <input type="text" id="i" value="0"></input><br/>
+  Bande morte: <input type="text" id="dead" value="0"></input><br/>
+  Reset band: <input type="text" id="reset" value="0"></input><br/>
+  Bias: <input type="text" id="bias" value="50"></input><br/>
+  <br/>
+  <b>Variables</b><br/>
+  Entrée initiale: <input type="text" id="input", value="20"></input><br/>
+  Consigne: <input type="text" id="pc" value="21"></input><br/>
+  Nombre de points: <input type="text" id="nb_pt" value="500"></input><br/>
+  Interval calcul (s): <input type="text" id="interval_calcul" value="0.1"></input><br/>
+  Variation normale: <input type="text" id="variation" value="0.1"></input><br/>
+  Variation climatisation: <input type="text" id="variation_cool" value="0.1"></input><br/>
+  Variation chauffage: <input type="text" id="variation_heat" value="0.1"></input><br/>
+  Interval variation (s): <input type="text" id="interval" value="1"></input><br/>
+
+  <br/>
+  <button type="button" id="runSimulBtn">Calculer</button><br/>
+  <br/>
+  <b>Résultat</b><br/>
+
+  <div style="width: 800px;"><canvas id="graph"></canvas></div>
+  <div style="width: 800px;"><canvas id="graph-output"></canvas></div>
+
+  Temps atteindre consigne: <input type="text"></input><br/>
+  Overshoot: <input type="text"></input><br/>
+  Temps atteindre stabilité: <input type="text"></input><br/>
+  <br/>
+  <br/>
+  <br/>
+
+</div>
