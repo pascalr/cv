@@ -39,29 +39,46 @@
     border: none;
     border-bottom: 1px solid black;
   }
+  #config b {
+    color: #428c9d;
+  }
 </style>
 
-  P: <input type="text" id="p" value="1.0"></input><br/>
-  I (%/min): <input type="text" id="i" value="1.0"></input><br/>
-  Bande morte: <input type="text" id="dead" value="0.2"></input><br/>
-  Reset band: <input type="text" id="reset" value="0"></input><br/>
-  Bias: <input type="text" id="bias" value="50"></input><br/>
-  <br/>
-  <b>Variables</b><br/>
-  Entrée initiale: <input type="text" id="input", value="20"></input><br/>
-  Consigne: <input type="text" id="pc" value="21"></input><br/>
-  Nombre de points: <input type="text" id="nb_pt" value="200"></input><br/>
-  Durée (min): <input type="text" id="duree" value="60"></input><br/>
-  Variation normale (°C/min): <input type="text" id="variation" value="0.1"></input><br/>
-  Variation chauffage (°C/min): <input type="text" id="variation_heat" value="0.2"></input><br/>
-  Variation climatisation (°C/min): <input type="text" id="variation_cool" value="-0.2"></input><br/>
+  <div class="d-md-flex gap-30">
+    <div id="config">
+      <h3>Configuration</h3>
+      <b>Bande proportionnelle (P)</b>: <input type="text" id="p" value="1.0"></input><br/>
+      <b>Bande morte</b>: <input type="text" id="dead" value="0.2"></input><br/>
+      <br/>
+      <b>Bias</b>: <input type="text" id="bias" value="50"></input><br/>
+      <br/>
+      <b>Bande intégrale (%/min)</b>: <input type="text" id="i" value="1.0"></input><br/>
+      <b>Reset band</b>: <input type="text" id="reset" value="0"></input><br/>
+      <br/>
+      <h3>Paramètres</h3>
+      <b>Entrée initiale</b>: <input type="text" id="input", value="20"></input><br/>
+      <b>Consigne</b>: <input type="text" id="pc" value="21"></input><br/>
+      <b>Nombre de points</b>: <input type="text" id="nb_pt" value="200"></input><br/>
+      <b>Durée (min)</b>: <input type="text" id="duree" value="60"></input><br/>
+      <b>Variation normale (°C/min)</b>: <input type="text" id="variation" value="0.1"></input><br/>
+      <b>Variation chauffage (°C/min)</b>: <input type="text" id="variation_heat" value="0.2"></input><br/>
+      <b>Variation climatisation (°C/min)</b>: <input type="text" id="variation_cool" value="-0.2"></input><br/>
+      <b>Temps de réaction</b>: <input type="text" id="temps_reaction" value="TODO"></input><br/>
+    </div>
+    <div>
+      <div style="width: 500px;"><canvas id="courbe"></canvas></div>
+      <div style="width: 500px;"><canvas id="courbe-integrale"></canvas></div>
+    </div>
+  </div>
+
+
+
 
   <br/>
   <button type="button" id="runSimulBtn">Calculer</button><br/>
   <br/>
   <b>Résultat</b><br/>
 
-  <div style="width: 500px;"><canvas id="courbe"></canvas></div>
   <div style="width: 800px;"><canvas id="graph"></canvas></div>
   <div style="width: 800px;"><canvas id="graph-output"></canvas></div>
 

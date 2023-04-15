@@ -80,15 +80,33 @@ document.addEventListener("DOMContentLoaded", function() {
           },
           title: {
             display: true,
-            text: 'Courbe'
+            text: 'Proportionnel'
           },
         },
       }
     }
   );
 
-  function runSimul() {
+  let courbeIntegrale = new Chart(
+    document.getElementById('courbe-integrale'),
+    {
+      type: 'line',
+      data: {},
+      options: {
+        plugins:{
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Intégrale'
+          },
+        },
+      }
+    }
+  );
 
+  function fetchValues() {
     let p = parseFloat(document.getElementById('p').value)
     let integral = parseFloat(document.getElementById('i').value)
     let dead = parseFloat(document.getElementById('dead').value)
@@ -103,17 +121,35 @@ document.addEventListener("DOMContentLoaded", function() {
     let nb_pt = parseFloat(document.getElementById('nb_pt').value)
     let d_t = duree/nb_pt // delta t
 
-    let xs = [pc-dead/2-p, pc-dead/2-p/2, pc-dead/2, pc, pc+dead/2, pc+dead/2+p/2, pc+dead/2+p]
-    let ys = [0, 0, bias, bias, bias, 100, 100]
-    courbe.data = {
-      labels: xs,
-      datasets: [
-        {
-          data: ys,
-        },
-      ]
+    return {p, integral, dead, reset, bias, variation, variation_cool, variation_heat, duree, input, pc, nb_pt, d_t}
+  }
+
+  function runSimul() {
+
+    let {p, integral, dead, reset, bias, variation, variation_cool, variation_heat, duree, input, pc, nb_pt, d_t} = fetchValues()
+
+    let configs = ['p', 'i', 'dead', 'reset', 'bias', 'input', 'pc']
+
+    configs.forEach(config => {
+      document.getElementById(config).addEventListener('change', () => {
+        updateCourbes()
+      }, false)
+    })
+
+    function updateCourbes() {
+      let {p, integral, dead, reset, bias, variation, variation_cool, variation_heat, duree, input, pc, nb_pt, d_t} = fetchValues()
+
+      let xs = ["", pc-dead/2-p/2 + " (-PB)", pc-dead/2 + "(-DB)", pc + " (SP)", pc+dead/2 + " (DB)", pc+dead/2+p/2 + " (PB)", ""]
+      let ys = [0, 0, bias, bias, bias, 100, 100]
+      courbe.data = {labels: xs, datasets: [{data: ys, pointStyle: 'cross'}] }
+      courbe.update()
+  
+      xs = ["", pc-dead/2-p/2 + " (-RB)", pc-dead/2 + "(-DB)", pc + " (SP)", pc+dead/2 + " (DB)", pc+dead/2+p/2 + " (RB)", ""]
+      ys = [-integral, -integral, 0, 0, 0, integral, integral]
+      courbeIntegrale.data = {labels: xs, datasets: [{data: ys, pointStyle: 'cross'}] }
+      courbeIntegrale.update()
     }
-    courbe.update()
+    updateCourbes()
 
     const pvs = []
     const outs = []
@@ -165,21 +201,29 @@ document.addEventListener("DOMContentLoaded", function() {
           label: 'Output',
           data: outs,
           pointStyle: false,
+          borderColor: '#ffc107',
+          backgroundColor: '#ffc107',
         },
         {
           label: 'Bias',
           data: biases,
           pointStyle: false,
+          borderColor: '#F7FF00',
+          backgroundColor: '#F7FF00',
         },
         {
           label: 'Cooling',
           data: outs.map(out => scale(out, 50, 0, 100, 100)),
           pointStyle: false,
+          borderColor: '#0000FF',
+          backgroundColor: '#0000FF',
         },
         {
           label: 'Heating',
           data: outs.map(out => scale(out, 0, 100, 50, 0)),
           pointStyle: false,
+          borderColor: '#FF0000',
+          backgroundColor: '#FF0000',
         }
       ]
     }
