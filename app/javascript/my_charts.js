@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('runSimulBtn').addEventListener('click', () => {
 
     let p = parseFloat(document.getElementById('p').value)
-    let i = parseFloat(document.getElementById('i').value)
+    let integral = parseFloat(document.getElementById('i').value)
     let dead = parseFloat(document.getElementById('dead').value)
     let reset = parseFloat(document.getElementById('reset').value)
     let bias = parseFloat(document.getElementById('bias').value)
@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const pvs = []
     const outs = []
+    const biases = []
     console.log(nb_pt)
     let pv = input
     let out = bias
@@ -45,13 +46,18 @@ document.addEventListener("DOMContentLoaded", function() {
       pvs.push(pv)
       if (Math.abs(pv-pc)<dead/2) {
         out = bias
-      }
-      if (pv < pc - dead/2) {
-        out = 0
-      } else if (pv > pc + dead/2) {
-        out = 100
+      } else if (pv-pc > 0) {
+        out = scale(pv, pc+dead/2, bias, pc+p/2+dead/2, 100)
+      } else {
+        out = scale(pv, pc-dead/2, bias, pc-p/2-dead/2, 0)
       }
       outs.push(out)
+      if (out > bias) {
+        bias = Math.min(bias + integral * interval_calcul, 100)
+      } else {
+        bias = Math.max(bias - integral * interval_calcul, 0)
+      }
+      biases.push(bias)
     }
   
     new Chart(
@@ -86,6 +92,11 @@ document.addEventListener("DOMContentLoaded", function() {
             {
               label: 'Output',
               data: outs,
+              pointStyle: false,
+            },
+            {
+              label: 'Bias',
+              data: biases,
               pointStyle: false,
             },
             {
