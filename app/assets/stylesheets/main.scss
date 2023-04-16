@@ -35,6 +35,10 @@
   max-width: min(35vw, 250px);
   padding: 1em 0;
   left: 60%;
+  top: -80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .timeline-item-left .timeline-desc {
   left: auto;
