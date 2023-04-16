@@ -138,11 +138,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateCourbes() {
       let {p, integral, dead, reset, bias, variation, variation_cool, variation_heat, duree, input, pc, nb_pt, d_t} = fetchValues()
-
       let xs = ["", pc-dead/2-p/2 + " (-PB)", pc-dead/2 + "(-DB)", pc + " (SP)", pc+dead/2 + " (DB)", pc+dead/2+p/2 + " (PB)", ""]
       let ys = [0, 0, bias, bias, bias, 100, 100]
-      courbe.data = {labels: xs, datasets: [{data: ys, pointStyle: 'cross'}] }
+      let ds1 = [
+        {x: "", y: 0},
+        {x: pc-dead/2-p/2 + " (-PB)", y: 0},
+        {x: pc-dead/2 + "(-DB)", y: bias},
+        {x: pc + " (SP)", y: bias},
+        {x: pc+dead/2 + " (DB)", y: bias},
+        {x: pc+dead/2+p/2 + " (PB)", y: 100},
+        {x: "", y: 100},
+      ]
+      //let ds2 = {
+      //  label: 'PV',
+      //  radius: 5,
+      //  type: 'bubble',
+      //  data: [{x: input, y: 70}]
+      //}
+      courbe.data = {labels: xs, datasets: [{data: ds1, pointStyle: 'cross'}/*, ds2*/] }
       courbe.update()
+      // https://stackoverflow.com/questions/47721830/how-to-add-a-point-to-chart-js-line-chart
+      //let ctx = document.getElementById('courbe').getContext('2d')
+      //ctx.beginPath();
+      //ctx.fillStyle = "#f00";//or whatever color
+      //ctx.fillRect(0, 0, 150, 75); 
+      //ctx.arc(0,0,20,0,Math.PI*2); //maybe too big for you, but you get the point
+      //ctx.fill();
   
       xs = ["", pc-dead/2-p/2 + " (-RB)", pc-dead/2 + "(-DB)", pc + " (SP)", pc+dead/2 + " (DB)", pc+dead/2+p/2 + " (RB)", ""]
       ys = [-integral, -integral, 0, 0, 0, integral, integral]
