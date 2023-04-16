@@ -71,7 +71,7 @@ h2 {
 
 @keyframes infiniteloop {
   from {transform: translateX(0); width: 100%;}
-  to {transform: translateX(calc(5 * -240px)); width: 200%;}
+  to {transform: translateX(calc(6 * -240px)); width: 200%;}
 }
 @keyframes infiniteloopLoop {
   from {left: 100%;}
