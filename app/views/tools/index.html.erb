@@ -8,62 +8,95 @@
   
   <h1>Outils</h1>
 
-  <h2>Guide pratique d'un PID hvac</h2>
+  <h2>Guide pour configurer un PID hvac Delta</h2>
 
-  <p>P (proportionel): Si un contrôleur est gérer en proportionel seulement et qu'il vaut 0, alors l'output sera soit 0% ou 100% (ou 50% si bande morte). En augmentant la bande proportionnel, tu deviens plus lent à réagir, mais tu augmentes la stabilité du système. Pour setter la bande proportionnelle, on suggère de premièrement déterminer à quel point est-ce que c'est permis de baisser. Par exemple, dans une pièce, tu veux que le chauffage soit au maximum si tu est 1 degré C en dessous du point de consigne. Tu multiplies cette valeur par 2. Donc, une bande proportionnelle de 2 dans ce cas.</p>
-  <p>Recommendations</p>
-  <ul>
-    <li>Mixed air damper: 20 deg C</li>
-    <li>Heating coil valve: 20 deg C</li>
-    <li>Supply air static pressure: 2 in wc</li>
-    <li>Température de pièce: 2 deg C</li>
-    <li>Variable speed pumping: 30 psi</li>
-  </ul>
-  <p>I (intégral): La partie intégrale fait varier le bias dans le temps.</p>
-  <p>D (dérivé): La partie dérivé sert à diminuer les effets de changements de variation rapide. Dans un système cvac, ce n'est pas nécessaire puisque les changements se font lentement.</p>
+  <p><i>Note: Delta ne fait pas un vrai PID. Ils utilisent une version simplifiée pour l'intégrale.</i></p>
 
-  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP). Eux ils disent que ça sert à éviter l'usure des actuateurs, bearings et linkages, mais je n'y crois pas vraiment... Théorie: La bande morte sert à prévenir l'overshoot. Si ton système est lent à réagir, tu veux arrêter plus tôt que prévu. Je pense que ce n'est pas très bon d'utiliser une bande morte. C'est mieux de simplement faire un DoEvery 15 s sur la modulation des valves pour éviter que les moteurs tournent toujours. Le problème est que si le système réagit rapidement, il va se stabiliser autour du PC + Dead band.</p>
-  <p>Reset band: Diminue proportionnellement l'effet de l'intégrale en se rapprochant de PC. Rule of thumb: 25% à 50% de la bande proportionnelle</p>
-  <p>Bias: Quand l'entrée (PV) est égal à la consigne (SP), la valeur de l'output est égal au bias.</p>
-
-  <p>Attention: si le output change plus rapidement que l'entrée, le système ne peut pas être stable.</p>
+  <p>Un contrôleur PID contrôle une sortie afin que l'entrée atteigne un point de consigne. Par exemple, contrôler une plinthe de chauffage pour que la température de la pièce atteigne la température désirée.</p>
   
   <h2>Simulation</h2>
 
-  <p>TODO: Rajouter une valeur de délais de réaction.</p>
-
-  <p>TODO: Vérifier est-ce que le dead band diminue réellement le nombre de fois que l'output change? Est-ce que ça diminue réellement l'usure?</p>
-
 <style>
-  input {
-    border: none;
-    border-bottom: 1px solid black;
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
   }
-  #config b {
-    color: #428c9d;
+
+  .form-group label {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .form-group input {
+    padding: 0.1rem 0.25rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
   }
 </style>
 
   <div class="d-md-flex gap-30">
     <div id="config">
-      <h3>Configuration</h3>
-      <b>Bande proportionnelle (P)</b>: <input type="text" id="p" value="1.0"></input><br/>
-      <b>Bande morte</b>: <input type="text" id="dead" value="0.2"></input><br/>
-      <br/>
-      <b>Bias</b>: <input type="text" id="bias" value="50"></input><br/>
-      <br/>
-      <b>Bande intégrale (%/min)</b>: <input type="text" id="i" value="1.0"></input><br/>
-      <b>Reset band</b>: <input type="text" id="reset" value="0"></input><br/>
-      <br/>
-      <h3>Paramètres</h3>
-      <b>Entrée initiale</b>: <input type="text" id="input", value="20"></input><br/>
-      <b>Consigne</b>: <input type="text" id="pc" value="21"></input><br/>
-      <b>Nombre de points</b>: <input type="text" id="nb_pt" value="200"></input><br/>
-      <b>Durée (min)</b>: <input type="text" id="duree" value="60"></input><br/>
-      <b>Variation normale (°C/min)</b>: <input type="text" id="variation" value="0.1"></input><br/>
-      <b>Variation chauffage (°C/min)</b>: <input type="text" id="variation_heat" value="0.2"></input><br/>
-      <b>Variation climatisation (°C/min)</b>: <input type="text" id="variation_cool" value="-0.2"></input><br/>
-      <b>Temps de réaction</b>: <input type="text" id="temps_reaction" value="TODO"></input><br/>
+      <h4>Configuration</h4>
+      <div class="form-group">
+        <label for="p">Bande proportionnelle (°C):</label>
+        <input type="text" id="p" value="1.0"></input>
+      </div>
+      <div class="form-group">
+        <label for="dead">Bande morte (°C):</label>
+        <input type="text" id="dead" value="0.2"></input>
+      </div>
+      <div class="form-group">
+        <label for="bias">Bias (%):</label>
+        <input type="text" id="bias" value="50"></input>
+      </div>
+      <div class="form-group">
+        <label for="i">Bande intégrale (%/min):</label>
+        <input type="text" id="i" value="1.0"></input>
+      </div>
+      <div class="form-group">
+        <label for="reset">Reset band (°C):</label>
+        <input type="text" id="reset" value="0.4"></input>
+      </div>
+
+      <h4>Paramètres</h4>
+      <div class="form-group">
+        <label for="input">Entrée initiale (°C):</label>
+        <input type="text" id="input", value="20"></input>
+      </div>
+      <div class="form-group">
+        <label for="pc">Consigne (°C):</label>
+        <input type="text" id="pc" value="21"></input>
+      </div>
+      <div class="form-group">
+        <label for="nb_pt">Nombre de points:</label>
+        <input type="text" id="nb_pt" value="200"></input>
+      </div>
+      <div class="form-group">
+        <label for="duree">Durée (min):</label>
+        <input type="text" id="duree" value="60"></input>
+      </div>
+      <div class="form-group">
+        <label for="variation">Variation normale (°C/min):</label>
+        <input type="text" id="variation" value="0.1"></input>
+      </div>
+      <div class="form-group">
+        <label for="variation_heat">Variation chauffage (°C/min):</label>
+        <input type="text" id="variation_heat" value="0.2"></input>
+      </div>
+      <div class="form-group">
+        <label for="variation_cool">Variation climatisation (°C/min):</label>
+        <input type="text" id="variation_cool" value="-0.2"></input>
+      </div>
+      <div class="form-group">
+        <label for="temps_reaction">Temps de réaction (s):</label>
+        <input type="text" id="temps_reaction" value="TODO"></input>
+      </div>
+      <div class="form-group">
+        <label for="temps_course" title="Le temps que l'actuateur fait pour varier de 0 à 100%. Mais ici je n'ai pas d'actuateur...">Temps de course (s):</label>
+        <input type="text" id="temps_course" value="TODO"></input>
+      </div>
     </div>
     <div>
       <div style="width: 500px;"><canvas id="courbe"></canvas></div>
@@ -88,5 +121,34 @@
   <br/>
   <br/>
   <br/>
+
+  <h2>Work in progress...</h2>
+
+  <p>TODO: Rajouter une valeur de délais de réaction.</p>
+
+  <p>TODO: Vérifier est-ce que le dead band diminue réellement le nombre de fois que l'output change? Est-ce que ça diminue réellement l'usure?</p>
+
+  <p>TODO: Pour bien faire, créer des scénarios préprogrammés</p>
+
+
+  <h3>Lexique</h3>
+
+  <p>P (proportionnel): Paramètre qui détermine à quel point tu agis progressivement sur la sortie. En augmentant la bande proportionnel, tu deviens plus lent à réagir, mais tu augmentes la stabilité du système. Pour setter la bande proportionnelle, on suggère de premièrement déterminer à quel point est-ce que c'est permis de baisser. Par exemple, dans une pièce, tu veux que le chauffage soit au maximum si tu est 1 degré C en dessous du point de consigne. Tu multiplies cette valeur par 2. Donc, une bande proportionnelle de 2 dans ce cas.</p>
+  <p>Recommendations</p>
+  <ul>
+    <li>Mixed air damper: 20 deg C</li>
+    <li>Heating coil valve: 20 deg C</li>
+    <li>Supply air static pressure: 2 in wc</li>
+    <li>Température de pièce: 2 deg C</li>
+    <li>Variable speed pumping: 30 psi</li>
+  </ul>
+  <p>I (intégral): La partie intégrale fait varier le bias dans le temps.</p>
+  <p>D (dérivé): La partie dérivé sert à diminuer les effets de changements de variation rapide. Dans un système cvac, ce n'est pas nécessaire puisque les changements se font lentement.</p>
+
+  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP). Eux ils disent que ça sert à éviter l'usure des actuateurs, bearings et linkages, mais je n'y crois pas vraiment... Théorie: La bande morte sert à prévenir l'overshoot. Si ton système est lent à réagir, tu veux arrêter plus tôt que prévu. Je pense que ce n'est pas très bon d'utiliser une bande morte. C'est mieux de simplement faire un DoEvery 15 s sur la modulation des valves pour éviter que les moteurs tournent toujours. Le problème est que si le système réagit rapidement, il va se stabiliser autour du PC + Dead band.</p>
+  <p>Reset band: Diminue proportionnellement l'effet de l'intégrale en se rapprochant de PC. Rule of thumb: 25% à 50% de la bande proportionnelle</p>
+  <p>Bias: Quand l'entrée (PV) est égal à la consigne (SP), la valeur de l'output est égal au bias.</p>
+
+  <p>Attention: si le output change plus rapidement que l'entrée, le système ne peut pas être stable.</p>
 
 </div>
