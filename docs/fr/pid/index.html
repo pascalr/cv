@@ -1,8 +1,51 @@
-<%= javascript_include_tag "my_charts", defer: true %>
+<!DOCTYPE html><html><head>
+    <title>Pascal</title>
+    <meta name="viewport" content="width=380,initial-scale=1">
+    <meta charset="utf-8">
+    
 
-<% if in_english? %>
-  <%= render partial: 'home/translation_missing' %>
-<% end %>
+    <link rel="stylesheet" href="../../assets/app_css-2e643648fd58cf450444a6e040453d924b3490b2c4209850a262afaab6b2a7a3.css">
+    <script src="../../assets/application-dc6b2123822d4d75d545c58e8cd82bdb9ab69dcf065d5fdccd3f20f1d53e6630.js" defer="defer"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="d-flex">
+          <a class="navbar-brand" href="../../fr">
+            <img width="36" class="d-inline-block align-text-middle" style="border: 1px solid #555; border-radius: 18px; margin-right: 2px;" src="../../visage_tiny.png">
+            <span class="d-none d-xsm-inline">Pascal Rainville</span>
+</a>          <a hreflang="en" rel="alternate" class="nav-item nav-link" href="../../en/pid">
+            <img width="24" class="d-inline-block align-text-middle" src="../../world.svg">
+            <span style="color: rgba(0, 0, 0, 0.55);">EN</span>
+</a>        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <a class="nav-item nav-link" href="../../fr/prog">Programmation</a>
+            <a class="nav-item nav-link" href="../../fr/robot">Robotiques</a>
+            <a class="nav-item nav-link" href="../../fr/conception">Conception</a>
+            <a class="nav-item nav-link" href="../../fr/projects">Projets</a>
+            <a class="nav-item nav-link" href="https://pascalr.github.io/voyage/">Voyages</a>
+            <div class="dropdown">
+              <div class="nav-item nav-link dropdown-toggle clickable" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Outils
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item active" href="../../fr/pid">PID CVAC Delta</a></li>
+              </ul>
+            </div>
+            <a class="nav-item nav-link" href="../../fr/about">À propos</a>
+            <a class="nav-item nav-link" href="../../fr/contact">Me contacter</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="root">
+      <script src="../../assets/my_charts-32f79bbf53d4355d41bf5f0bb04631643de1755be2ae3de5c25a234dba3226c4.js" defer="defer"></script>
+
 
 <div class="responsive-margins-lg">
   
@@ -13,7 +56,7 @@
   <p><i>Note: Delta ne fait pas un vrai PID. Ils utilisent une version simplifiée pour l'intégrale.</i></p>
 
   <p>Un contrôleur PID contrôle une sortie afin que l'entrée atteigne un point de consigne. Par exemple, contrôler une plinthe de chauffage pour que la température de la pièce atteigne la température désirée.</p>
-  
+
   <h2>Simulation</h2>
 
 <style>
@@ -41,61 +84,61 @@
       <h4>Configuration</h4>
       <div class="form-group">
         <label for="p">Bande proportionnelle (°C):</label>
-        <input type="text" id="p" value="1.0"></input>
+        <input type="text" id="p" value="1.0">
       </div>
       <div class="form-group">
         <label for="dead">Bande morte (°C):</label>
-        <input type="text" id="dead" value="0.2"></input>
+        <input type="text" id="dead" value="0.2">
       </div>
       <div class="form-group">
         <label for="bias">Bias (%):</label>
-        <input type="text" id="bias" value="50"></input>
+        <input type="text" id="bias" value="50">
       </div>
       <div class="form-group">
         <label for="i">Bande intégrale (%/min):</label>
-        <input type="text" id="i" value="1.0"></input>
+        <input type="text" id="i" value="1.0">
       </div>
       <div class="form-group">
         <label for="reset">Reset band (°C):</label>
-        <input type="text" id="reset" value="0.4"></input>
+        <input type="text" id="reset" value="0.4">
       </div>
 
       <h4>Paramètres</h4>
       <div class="form-group">
         <label for="input">Entrée initiale (°C):</label>
-        <input type="text" id="input", value="20"></input>
+        <input type="text" id="input" ,="" value="20">
       </div>
       <div class="form-group">
         <label for="pc">Consigne (°C):</label>
-        <input type="text" id="pc" value="21"></input>
+        <input type="text" id="pc" value="21">
       </div>
       <div class="form-group">
         <label for="nb_pt">Nombre de points:</label>
-        <input type="text" id="nb_pt" value="200"></input>
+        <input type="text" id="nb_pt" value="200">
       </div>
       <div class="form-group">
         <label for="duree">Durée (min):</label>
-        <input type="text" id="duree" value="60"></input>
+        <input type="text" id="duree" value="60">
       </div>
       <div class="form-group">
         <label for="variation">Variation normale (°C/min):</label>
-        <input type="text" id="variation" value="0.1"></input>
+        <input type="text" id="variation" value="0.1">
       </div>
       <div class="form-group">
         <label for="variation_heat">Variation chauffage (°C/min):</label>
-        <input type="text" id="variation_heat" value="0.2"></input>
+        <input type="text" id="variation_heat" value="0.2">
       </div>
       <div class="form-group">
         <label for="variation_cool">Variation climatisation (°C/min):</label>
-        <input type="text" id="variation_cool" value="-0.2"></input>
+        <input type="text" id="variation_cool" value="-0.2">
       </div>
       <div class="form-group">
         <label for="temps_reaction">Temps de réaction (s):</label>
-        <input type="text" id="temps_reaction" value="TODO"></input>
+        <input type="text" id="temps_reaction" value="TODO">
       </div>
       <div class="form-group">
         <label for="temps_course" title="Le temps que l'actuateur fait pour varier de 0 à 100%. Mais ici je n'ai pas d'actuateur...">Temps de course (s):</label>
-        <input type="text" id="temps_course" value="TODO"></input>
+        <input type="text" id="temps_course" value="TODO">
       </div>
     </div>
     <div>
@@ -107,20 +150,17 @@
 
 
 
-  <br/>
-  <button type="button" id="runSimulBtn">Calculer</button><br/>
-  <br/>
-  <b>Résultat</b><br/>
+  <br>
+  <button class="btn btn-primary" type="button" id="runSimulBtn">Calculer</button><br>
+  <br>
+  <h4>Résultat</h4>
 
   <div style="width: 800px;"><canvas id="graph"></canvas></div>
   <div style="width: 800px;"><canvas id="graph-output"></canvas></div>
 
-  Temps atteindre consigne: <input type="text"></input><br/>
-  Overshoot: <input type="text"></input><br/>
-  Temps atteindre stabilité: <input type="text"></input><br/>
-  <br/>
-  <br/>
-  <br/>
+  <br>
+  <br>
+  <br>
 
   <h2>Work in progress...</h2>
 
@@ -152,3 +192,7 @@
   <p>Attention: si le output change plus rapidement que l'entrée, le système ne peut pas être stable.</p>
 
 </div>
+    </div>
+  
+
+</body></html>

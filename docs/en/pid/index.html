@@ -1,0 +1,200 @@
+<!DOCTYPE html><html><head>
+    <title>Pascal</title>
+    <meta name="viewport" content="width=380,initial-scale=1">
+    <meta charset="utf-8">
+    
+
+    <link rel="stylesheet" href="../../assets/app_css-2e643648fd58cf450444a6e040453d924b3490b2c4209850a262afaab6b2a7a3.css">
+    <script src="../../assets/application-dc6b2123822d4d75d545c58e8cd82bdb9ab69dcf065d5fdccd3f20f1d53e6630.js" defer="defer"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="d-flex">
+          <a class="navbar-brand" href="../../en">
+            <img width="36" class="d-inline-block align-text-middle" style="border: 1px solid #555; border-radius: 18px; margin-right: 2px;" src="../../visage_tiny.png">
+            <span class="d-none d-xsm-inline">Pascal Rainville</span>
+</a>          <a hreflang="fr" rel="alternate" class="nav-item nav-link" href="../../fr/pid">
+            <img width="24" class="d-inline-block align-text-middle" src="../../world.svg">
+            <span style="color: rgba(0, 0, 0, 0.55);">FR</span>
+</a>        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <a class="nav-item nav-link" href="../../en/prog">Programming</a>
+            <a class="nav-item nav-link" href="../../en/robot">Robotics</a>
+            <a class="nav-item nav-link" href="../../en/conception">Conception</a>
+            <a class="nav-item nav-link" href="../../en/projects">Projects</a>
+            <a class="nav-item nav-link" href="https://pascalr.github.io/voyage/">Trips</a>
+            <div class="dropdown">
+              <div class="nav-item nav-link dropdown-toggle clickable" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tools
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item active" href="../../en/pid">PID CVAC Delta</a></li>
+              </ul>
+            </div>
+            <a class="nav-item nav-link" href="../../en/about">About</a>
+            <a class="nav-item nav-link" href="../../en/contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="root">
+      <script src="../../assets/my_charts-32f79bbf53d4355d41bf5f0bb04631643de1755be2ae3de5c25a234dba3226c4.js" defer="defer"></script>
+
+  <p style="background-color: yellow; border: 2px solid black; border-radius: 5px; margin: 2em 2em 0 2em; padding: 0.5em;"><b>Note: The translation is not done yet. This page is only in french for now.</b></p>
+
+
+<div class="responsive-margins-lg">
+  
+  <h1>Outils</h1>
+
+  <h2>Guide pour configurer un PID hvac Delta</h2>
+
+  <p><i>Note: Delta ne fait pas un vrai PID. Ils utilisent une version simplifiée pour l'intégrale.</i></p>
+
+  <p>Un contrôleur PID contrôle une sortie afin que l'entrée atteigne un point de consigne. Par exemple, contrôler une plinthe de chauffage pour que la température de la pièce atteigne la température désirée.</p>
+
+  <h2>Simulation</h2>
+
+<style>
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .form-group label {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .form-group input {
+    padding: 0.1rem 0.25rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+</style>
+
+  <div class="d-md-flex gap-30">
+    <div id="config">
+      <h4>Configuration</h4>
+      <div class="form-group">
+        <label for="p">Bande proportionnelle (°C):</label>
+        <input type="text" id="p" value="1.0">
+      </div>
+      <div class="form-group">
+        <label for="dead">Bande morte (°C):</label>
+        <input type="text" id="dead" value="0.2">
+      </div>
+      <div class="form-group">
+        <label for="bias">Bias (%):</label>
+        <input type="text" id="bias" value="50">
+      </div>
+      <div class="form-group">
+        <label for="i">Bande intégrale (%/min):</label>
+        <input type="text" id="i" value="1.0">
+      </div>
+      <div class="form-group">
+        <label for="reset">Reset band (°C):</label>
+        <input type="text" id="reset" value="0.4">
+      </div>
+
+      <h4>Paramètres</h4>
+      <div class="form-group">
+        <label for="input">Entrée initiale (°C):</label>
+        <input type="text" id="input" ,="" value="20">
+      </div>
+      <div class="form-group">
+        <label for="pc">Consigne (°C):</label>
+        <input type="text" id="pc" value="21">
+      </div>
+      <div class="form-group">
+        <label for="nb_pt">Nombre de points:</label>
+        <input type="text" id="nb_pt" value="200">
+      </div>
+      <div class="form-group">
+        <label for="duree">Durée (min):</label>
+        <input type="text" id="duree" value="60">
+      </div>
+      <div class="form-group">
+        <label for="variation">Variation normale (°C/min):</label>
+        <input type="text" id="variation" value="0.1">
+      </div>
+      <div class="form-group">
+        <label for="variation_heat">Variation chauffage (°C/min):</label>
+        <input type="text" id="variation_heat" value="0.2">
+      </div>
+      <div class="form-group">
+        <label for="variation_cool">Variation climatisation (°C/min):</label>
+        <input type="text" id="variation_cool" value="-0.2">
+      </div>
+      <div class="form-group">
+        <label for="temps_reaction">Temps de réaction (s):</label>
+        <input type="text" id="temps_reaction" value="TODO">
+      </div>
+      <div class="form-group">
+        <label for="temps_course" title="Le temps que l'actuateur fait pour varier de 0 à 100%. Mais ici je n'ai pas d'actuateur...">Temps de course (s):</label>
+        <input type="text" id="temps_course" value="TODO">
+      </div>
+    </div>
+    <div>
+      <div style="width: 500px;"><canvas id="courbe"></canvas></div>
+      <div style="width: 500px;"><canvas id="courbe-integrale"></canvas></div>
+    </div>
+  </div>
+
+
+
+
+  <br>
+  <button class="btn btn-primary" type="button" id="runSimulBtn">Calculer</button><br>
+  <br>
+  <h4>Résultat</h4>
+
+  <div style="width: 800px;"><canvas id="graph"></canvas></div>
+  <div style="width: 800px;"><canvas id="graph-output"></canvas></div>
+
+  <br>
+  <br>
+  <br>
+
+  <h2>Work in progress...</h2>
+
+  <p>TODO: Rajouter une valeur de délais de réaction.</p>
+
+  <p>TODO: Vérifier est-ce que le dead band diminue réellement le nombre de fois que l'output change? Est-ce que ça diminue réellement l'usure?</p>
+
+  <p>TODO: Pour bien faire, créer des scénarios préprogrammés</p>
+
+
+  <h3>Lexique</h3>
+
+  <p>P (proportionnel): Paramètre qui détermine à quel point tu agis progressivement sur la sortie. En augmentant la bande proportionnel, tu deviens plus lent à réagir, mais tu augmentes la stabilité du système. Pour setter la bande proportionnelle, on suggère de premièrement déterminer à quel point est-ce que c'est permis de baisser. Par exemple, dans une pièce, tu veux que le chauffage soit au maximum si tu est 1 degré C en dessous du point de consigne. Tu multiplies cette valeur par 2. Donc, une bande proportionnelle de 2 dans ce cas.</p>
+  <p>Recommendations</p>
+  <ul>
+    <li>Mixed air damper: 20 deg C</li>
+    <li>Heating coil valve: 20 deg C</li>
+    <li>Supply air static pressure: 2 in wc</li>
+    <li>Température de pièce: 2 deg C</li>
+    <li>Variable speed pumping: 30 psi</li>
+  </ul>
+  <p>I (intégral): La partie intégrale fait varier le bias dans le temps.</p>
+  <p>D (dérivé): La partie dérivé sert à diminuer les effets de changements de variation rapide. Dans un système cvac, ce n'est pas nécessaire puisque les changements se font lentement.</p>
+
+  <p>Dead band: Dans la bande morte spécifié autour de la consigne (SP). Eux ils disent que ça sert à éviter l'usure des actuateurs, bearings et linkages, mais je n'y crois pas vraiment... Théorie: La bande morte sert à prévenir l'overshoot. Si ton système est lent à réagir, tu veux arrêter plus tôt que prévu. Je pense que ce n'est pas très bon d'utiliser une bande morte. C'est mieux de simplement faire un DoEvery 15 s sur la modulation des valves pour éviter que les moteurs tournent toujours. Le problème est que si le système réagit rapidement, il va se stabiliser autour du PC + Dead band.</p>
+  <p>Reset band: Diminue proportionnellement l'effet de l'intégrale en se rapprochant de PC. Rule of thumb: 25% à 50% de la bande proportionnelle</p>
+  <p>Bias: Quand l'entrée (PV) est égal à la consigne (SP), la valeur de l'output est égal au bias.</p>
+
+  <p>Attention: si le output change plus rapidement que l'entrée, le système ne peut pas être stable.</p>
+
+</div>
+    </div>
+  
+
+</body></html>

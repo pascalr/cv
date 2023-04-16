@@ -36,7 +36,14 @@
             <%= link_to_active tr(:navbar_conception), conception_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:navbar_projects), projects_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:navbar_trips), trips_path, class: "nav-item nav-link" %>
-            <%= link_to_active tr(:navbar_tools), tools_path, class: "nav-item nav-link" %>
+            <div class="dropdown">
+              <div class="nav-item nav-link dropdown-toggle clickable" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= tr(:navbar_tools) %>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to_active "PID CVAC Delta", pid_path, class: "dropdown-item" %></li>
+              </ul>
+            </div>
             <%= link_to_active tr(:navbar_about), about_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:navbar_contact), contact_path, class: "nav-item nav-link" %>
           </div>

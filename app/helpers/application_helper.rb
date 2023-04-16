@@ -25,6 +25,10 @@ module ApplicationHelper
     end
   end
 
+  def trips_path
+    'https://pascalr.github.io/voyage/'
+  end
+
   def timeline_item(date, title, item=nil)
     @is_left = true unless defined?(@is_left)
     r = ''

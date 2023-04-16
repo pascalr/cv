@@ -1,4 +1,4 @@
 class ToolsController < ApplicationController
-  def index
+  def pid
   end
 end

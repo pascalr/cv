@@ -16,10 +16,9 @@ Rails.application.routes.draw do
     
     get 'thailand', to: 'trips#thailand', as: 'thailand'
 
-    get 'trips', to: redirect('https://pascalr.github.io/voyage/')
+    get 'pid', to: 'tools#pid', as: 'pid'
     
     resources 'projects', only: 'index'
-    resources 'tools', only: 'index'
     get '/', to: "home#index", as: 'home'
   end
   #end
