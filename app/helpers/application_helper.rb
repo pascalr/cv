@@ -29,15 +29,22 @@ module ApplicationHelper
     'https://pascalr.github.io/voyage/'
   end
 
-  def timeline_item(date, title, item=nil)
+  def timeline_item(date, title, image=nil, item=nil)
     @is_left = true unless defined?(@is_left)
     r = ''
     r += "<div class='timeline-item-"+(@is_left ? 'left' : 'right')+"'>"
     r += "  <div class='timeline-line'></div>"
     r += "  <div class='timeline-dash'></div>"
     r += "  <div class='timeline-desc'>"
-    r += "    <div><b>"+date+"</b></div>"
-    r += "    <div>"+title+"</div>"
+    if image
+      r += "    <div>"
+      r += "    <img src='"+image+"' style='max-height: 200px;'></img>"
+      r += "    </div>"
+    end
+    r += "    <div>"
+    r += "      <div><b>"+date+"</b></div>"
+    r += "      <div>"+title+"</div>"
+    r += "    </div>"
     r += "  </div>"
     r += "</div>"
     @is_left = !@is_left
@@ -119,6 +126,7 @@ module ApplicationHelper
       title_employers: 'CURRENT AND PREVIOUS EMPLOYERS',
       contact_text: "For any questions or comments, you can contact me at the email address below:",
       contact_title: "Get in touch",
+      skills: 'Skills',
       btn_copy: "Copy",
     }
 
@@ -159,6 +167,7 @@ module ApplicationHelper
       exp_godot: "Programmation d'une simulation de bras robotique avec le logiciel Godot.",
       title_prog: 'EXPÉRIENCE EN PROGRAMMATION',
       title_exp: 'EXPÉRIENCE PROFESSIONNELLE',
+      skills: 'Compétences',
       title_employers: 'EMPLOYEURS ACTUEL ET ANCIENS',
       contact_text: "Pour toutes questions ou commentaires, vous pouvez me rejoindre à l'adresse courriel suivante:",
       contact_title: "Entrer en contact",

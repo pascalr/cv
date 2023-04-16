@@ -2,14 +2,12 @@ Sur la page principale, ça pourrait être bien d'avoir des thumbnails images de
 
 Ajouter des images et un peu de texte à ma ligne du temps
 Rendre ma ligne du temps plus belle
+Une belle image ronde pour chacun de mes voyages!
+Le logo des compagnies sur la ligne du temps?
 
 Page armoire de cuisine...
 
-Load image voyage Thaïlande seulement en scrollant.
-
 Corriger le français.
-
-Faire une ligne du temps de mon vécu?
 
 PROJET: Head tracking
 PROJET: Tissus clé mécaniques
@@ -18,4 +16,6 @@ PROJET: Base de lit
 PROJET: Pyrographie?
 PROJET: Site internet de liste d'épicerie?
 
-Une page contact.
+TODO: Enlever les onglets Programmation, Robotique et Conception et utiliser seulement Projet et créer Compétences
+
+Onglets Idées

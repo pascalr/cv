@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'pid', to: 'tools#pid', as: 'pid'
     
     resources 'projects', only: 'index'
+    resources 'skills', only: 'index'
     get '/', to: "home#index", as: 'home'
   end
   #end

@@ -1,0 +1,57 @@
+<% if in_english? %>
+  <%= render partial: 'home/translation_missing' %>
+<% end %>
+
+<div class="responsive-margins-lg">
+
+  <div class="section d-md-flex gap-30">
+    <%= image_tag_with_credit 'https://wiki.freecadweb.org/images/f/f4/Drawing_extraction.png', '/drawing.png', style: 'width: 600px; height: auto;' %>
+    <div>
+      <h2>Expérience: Modélisation 3d</h2>
+      <p>Modélisation 3d à l'aide des logiciels Solidworks et Freecad.</p>
+      <ul>
+        <li>Création et modifications de plans d'assemblages.</li>
+        <li>Conception complète d'un bras robotique 5 axes.</li>
+        <li>Modifications de plans d'ingénierie sous la supervision d'un ingénieur.</li>
+        <li>Fabrication de pièces mécaniques à l'aide d'une imprimante 3d.</li>
+        <li>Modélisation artistique à l'aide du logiciel Blender.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section d-md-flex gap-30">
+    <%= image_tag '/welding.jpg', width: '640' %>
+    <div>
+      <h2>Expérience: Soudage</h2>
+      <b>Appareils</b>
+        <ul>
+          <li>MIG</li>
+          <li>Baguette</li>
+        </ul>
+      <b>Conceptions</b>
+      <p>J'ai travaillé sur une variété de projets, notamment la fabrication de gardes de sécurité, d'équipements pour améliorer l'assurance qualité et des supports de toutes sortes de formes. J'ai également effectué des réparations sur des chariots, des convoyeurs, des moules et d'autres éléments mécaniques.</p>
+    </div>
+  </div>
+
+  <div class="section d-md-flex gap-30">
+    <%= image_tag '/kuka_cell.jpg', width: '600' %>
+    <div>
+      <h2>Expérience: Cellule robotisée Kuka</h2>
+      <p>J'ai de l'expérience à diagnostiquer et à réparer une cellule robotisée de la marque Kuka.</p>
+      <ul>
+        <li>Déplacer en manuel le bras robotique lorsqu'il s'est arrêté à une mauvaise position</li>
+        <li>Modifier les programmes pour ajuster les calibrations des opérations</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section d-md-flex gap-30">
+    <%= image_tag '/ladder_no_pub_license.jpg', width: '600', style: 'border: 1px solid #666;' %>
+    <div>
+      <h2>Expérience: Programmation d'automates</h2>
+      <p>J'ai de l'expérience à lire, diagnostiquer et modifier des automates programmables en ladder.</p>
+      <p>Je connais bien les automates programmables de <b>Omron</b> ainsi que leurs logiciels comme Sysmac Studio et Syswin.</p>
+    </div>
+  </div>
+
+</div>
