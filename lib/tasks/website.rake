@@ -120,9 +120,10 @@ namespace :website do
     LOCALES.each do |locale|
       download_short_url(no_portfolio_path(locale: locale))
       download_short_url(home_path(locale: locale))
-      download_short_url(robot_path(locale: locale))
-      download_short_url(prog_path(locale: locale))
-      download_short_url(conception_path(locale: locale))
+      #download_short_url(robot_path(locale: locale))
+      #download_short_url(prog_path(locale: locale))
+      #download_short_url(conception_path(locale: locale))
+      download_short_url(skills_path(locale: locale))
       download_short_url(cupboard_path(locale: locale))
       download_short_url(chuck_laser_path(locale: locale))
       download_short_url(mattress_pump_path(locale: locale))

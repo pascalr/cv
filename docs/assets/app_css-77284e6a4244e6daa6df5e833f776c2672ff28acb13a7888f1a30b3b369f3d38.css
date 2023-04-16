@@ -11159,6 +11159,10 @@ textarea.form-control-lg {
   max-width: min(35vw, 250px);
   padding: 1em 0;
   left: 60%;
+  top: -80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .timeline-item-left .timeline-desc {
@@ -11203,7 +11207,7 @@ h2, .h2 {
     width: 100%;
   }
   to {
-    transform: translateX(-1200px);
+    transform: translateX(-1440px);
     width: 200%;
   }
 }
