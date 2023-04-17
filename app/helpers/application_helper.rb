@@ -38,7 +38,7 @@ module ApplicationHelper
     r += "  <div class='timeline-desc'>"
     if image
       r += "    <div>"
-      r += "    <img src='"+image+"' style='max-height: 200px;'></img>"
+      r += "    <img src='"+image+"' style='max-height: 140px;'></img>"
       r += "    </div>"
     end
     r += "    <div>"
