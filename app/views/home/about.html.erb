@@ -2,44 +2,63 @@
   <%= render partial: 'translation_missing' %>
 <% end %>
 
+<%= image_tag '/visage.png', 'width': '420', style: 'margin: auto; display: block; max-width: 60vw;' %>
 <br/>
+<p style='width: 600px; max-width: 80%; margin: auto; font-family: IndieFlower; font-size: 1.5em;'>
+  <%= tr :welcome_message %>
+</p>
+
+<br/><br/><br/><br/><br/>
+
+<div class="responsive-margins-lg" style="max-width: 50em;">
+
+  <h1><%= tr(:contact_title) %></h1>
+  
+  <p><%= tr(:contact_text) %></p>
+  
+  <%= image_tag '/email.png', width: '280' %>
+  <button class="btn btn-primary" onclick="navigator.clipboard.writeText('pascal.rainville@gmail.com')"><%= tr(:btn_copy) %></button>
+
+</div>
+
+<br/><br/><br/><br/><br/><br/><br/>
 <h1 style="text-align: center;">Ma ligne du temps</h1>
 <br/><br/><br/><br/>
 
 <div class='timeline'>
   <div class="timeline-start"></div>
-  <%= timeline_item('1993', 'Ma naissance', '/baby.png') %>
-  <%= timeline_item('2006', 'Commencer à programmer', '/ogre_logo.png') %>
-  <%= timeline_item('Juin 2010', 'Stage: Hopper', '/hopper.jpeg') %>
-  <%= timeline_item('Septembre 2010', 'Études: Cégep de Saint-Jean sur Richelieu', '/graduation.svg') %>
-  <%= timeline_item('Mai 2011', 'Emploi: Hopper', '/hopper.jpeg') %>
-  <%= timeline_item('Mars 2012', 'Voyage: Californie', '/usa.jpg') %>
-  <%= timeline_item('Septembre 2012', 'Études: Cégep de Sherbrooke, 3e session', '/graduation.svg') %>
-  <%= timeline_item('Mars 2013', 'Voyage: Thaïlande', '/thailand.jpg') %>
-  <%= timeline_item('Avril 2013', 'Voyage: Cambodge', '/cambodia.jpg') %>
-  <%= timeline_item('Mai 2013', 'Voyage: Vietnam', '/vietnam.jpg') %>
-  <%= timeline_item('Juin 2013', 'Voyage: Chine', '/china.jpg') %>
-  <%= timeline_item('Juillet 2013', 'Voyage: Japon', '/japan.jpg') %>
-  <%= timeline_item('Aout 2013', 'Voyage: Nouvelle-Zélande', '/newzealand.jpg') %>
-  <%= timeline_item('Octobre 2013', 'Voyage: Italie et France', '/italy.jpg') %>
-  <%= timeline_item('Novembre 2013', 'Voyage: Belgique et Pays-Bas', '/belgium.jpg') %>
-  <%= timeline_item('Janvier 2014', 'Études: Cégep de Sherbrooke, 4e session', '/graduation.svg') %>
-  <%= timeline_item('Juin 2014', 'Emploi: Aménagement de sentiers pédestres', '/sepaq.png') %>
-  <%= timeline_item('Septembre 2014', 'Voyage: Turquie et Bulgarie', '/turkey.jpg') %>
-  <%= timeline_item('Novembre 2014', 'Emploi: Neigiste', '/sutton.jpg') %>
-  <%= timeline_item('Janvier 2015', 'Études: Sociologie (2 semaines)', '/shrug.png') %>
-  <%= timeline_item('Février 2015', 'Emploi: Cuisinier Boston Pizza', '/logo_bp.png') %>
-  <%= timeline_item('Aout 2015', 'Études: Électromécanique de sysèmes automatisés', '/graduation.svg') %>
-  <%= timeline_item('Novembre 2016', 'Stage: Pompes Saguenay', '/saguenay.jpg') %>
-  <%= timeline_item('Mars 2017', 'Emploi: Réparation J-F', '/weld.jpg') %>
-  <%= timeline_item('Décembre 2017', 'Emploi: Logiflex', '/logiflex.jpg') %>
-  <%= timeline_item('Aout 2018', 'Études: Génie mécanique', '/graduation.svg') %>
-  <%= timeline_item('Juin 2019', 'Stage: TLD', '/tld.jpeg') %>
-  <%= timeline_item('Décembre 2019', 'Emploi: Groupe mécanique Interprovincial', '/interprovincial.jpeg') %>
-  <%= timeline_item('Février 2020', 'Projet: Robot de cuisine', '/screenshot_sim.jpg') %>
-  <%= timeline_item('Janvier 2021', "Études: Lancement d'une entreprise", '/graduation.svg') %>
-  <%= timeline_item('Décembre 2021', "Emploi: PPD UHMW", '/ppd.png') %>
-  <%= timeline_item('Décembre 2022', "Emploi: Régulvar", '/regulvar.jpg') %>
+  <%# timeline_item('1993', 'Ma naissance', '/baby.png') %>
+  <%# timeline_item('2006', 'Commencer à programmer', '/ogre_logo.png') %>
+  <%= timeline_item('Juin 2010', 'Hopper<br/><i>Stagiaire dévelopment web</i>', '/hopper.jpeg') %>
+  <%= timeline_item('Septembre 2010', 'Saint-Jean sur Richelieu<br/><i>Science de la nature</i><br/><i>(2 sessions)</i>', '/graduation.svg') %>
+  <%= timeline_item('Mai 2011', 'Hopper<br/><i>Développeur web</i>', '/hopper.jpeg') %>
+  <%= timeline_item('Mars 2012', 'Voyage<br/><i>Californie</i>', '/usa.jpg') %>
+  <%= timeline_item('Septembre 2012', 'Cégep de Sherbrooke<br/><i>Science de la nature</i><br/><i>(3e session)</i>', '/graduation.svg') %>
+  <%= timeline_item('Mars 2013', 'Voyage<br/><i>Thaïlande</i>', '/thailand.jpg') %>
+  <%= timeline_item('Avril 2013', 'Voyage<br/><i>Cambodge</i>', '/cambodia.jpg') %>
+  <%= timeline_item('Mai 2013', 'Voyage<br/><i>Vietnam</i>', '/vietnam.jpg') %>
+  <%= timeline_item('Juin 2013', 'Voyage<br/><i>Chine</i>', '/china.jpg') %>
+  <%= timeline_item('Juillet 2013', 'Voyage<br/><i>Japon</i>', '/japan.jpg') %>
+  <%= timeline_item('Aout 2013', 'Voyage<br/><i>Nouvelle-Zélande</i>', '/newzealand.jpg') %>
+  <%= timeline_item('Octobre 2013', 'Voyage<br/><i>Italie et France</i>', '/italy.jpg') %>
+  <%= timeline_item('Novembre 2013', 'Voyage<br/><i>Belgique et Pays-Bas</i>', '/belgium.jpg') %>
+  <%= timeline_item('Janvier 2014', 'Cégep de Sherbrooke<br/><i>Science de la nature</i><br/><i>(4e session)</i>', '/graduation.svg') %>
+  <%= timeline_item('Juin 2014', 'Mont Orford<br/><i>Aménagement de sentiers pédestres</i>', '/sepaq.png') %>
+  <%= timeline_item('Septembre 2014', 'Voyage<br/><i>Turquie et Bulgarie</i>', '/turkey.jpg') %>
+  <%= timeline_item('Novembre 2014', 'Mont Sutton<br/><i>Neigiste</i>', '/sutton.jpg') %>
+  <%= timeline_item('Janvier 2015', 'Université Laval<br/><i>Sociologie</i><br/><i>(2 semaines)</i>', '/shrug.png') %>
+  <%= timeline_item('Février 2015', 'Boston Pizza<br/><i>Cuisinier</i>', '/logo_bp.png') %>
+  <%= timeline_item('Aout 2015', 'CFP Jonquière<br/><i>Électromécanique de systèmes automatisés</i>', '/graduation.svg') %>
+  <%= timeline_item('Novembre 2016', 'Pompes Saguenay<br/><i>Stagiaire électromécanique</i>', '/saguenay.jpg') %>
+  <%= timeline_item('Mars 2017', 'Réparation J-F<br/><i>Électromécanicien</i>', '/weld.jpg') %>
+  <%= timeline_item('Décembre 2017', 'Logiflex<br/><i>Électromécanicien</i>', '/logiflex.jpg') %>
+  <%= timeline_item('Aout 2018', 'Université de Sherbrooke<br/><i>Génie mécanique</i>', '/graduation.svg') %>
+  <%= timeline_item('Juin 2019', 'TLD<br/><i>Stagiaire génie mécanique</i>', '/tld.jpeg') %>
+  <%= timeline_item('Décembre 2019', 'Groupe mécanique Interprovincial<br/><i>Électromécanicien</i>', '/interprovincial.jpeg') %>
+  <%= timeline_item('Février 2020', 'Projet<br/><i>Robot de cuisine</i>', '/screenshot_sim.jpg') %>
+  <%= timeline_item('Janvier 2021', "Centre 24 juin<br/><i>Lancement d'une entreprise</i>", '/graduation.svg') %>
+  <%= timeline_item('Décembre 2021', "PPD UHMW<br/><i>Électromécanicien</i>", '/ppd.png') %>
+  <%= timeline_item('Décembre 2022', "Régulvar<br/><i>Technicien en immotique</i>", '/regulvar.jpg') %>
 </div>
 
 

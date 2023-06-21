@@ -36,7 +36,17 @@
             <%# link_to_active tr(:navbar_conception), conception_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:navbar_projects), projects_path, class: "nav-item nav-link" %>
             <%= link_to_active tr(:skills), skills_path, class: "nav-item nav-link" %>
-            <%= link_to_active tr(:navbar_trips), trips_path, class: "nav-item nav-link" %>
+            
+            <div class="dropdown">
+              <div class="nav-item nav-link dropdown-toggle clickable" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= tr(:navbar_websites) %>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to tr(:cooking), "https://www.hedacuisine.com/", class: "dropdown-item" %></li>
+                <li><%= link_to tr(:navbar_trips), trips_path, class: "dropdown-item" %></li>
+                <li><%= link_to tr(:guitar), "https://pascalr.github.io/guitar-chords/", class: "dropdown-item" %></li>
+              </ul>
+            </div>
             <div class="dropdown">
               <div class="nav-item nav-link dropdown-toggle clickable" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= tr(:navbar_tools) %>
@@ -46,7 +56,7 @@
               </ul>
             </div>
             <%= link_to_active tr(:navbar_about), about_path, class: "nav-item nav-link" %>
-            <%= link_to_active tr(:navbar_contact), contact_path, class: "nav-item nav-link" %>
+            <%# link_to_active tr(:navbar_contact), contact_path, class: "nav-item nav-link" %>
           </div>
         </div>
       </div>
