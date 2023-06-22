@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     get 'laser', to: 'projects#chuck_laser', as: 'chuck_laser'
     get 'pump', to: 'projects#mattress_pump', as: 'mattress_pump'
+    get 'jome', to: 'projects#jome', as: 'jome'
     
     get 'thailand', to: 'trips#thailand', as: 'thailand'
 

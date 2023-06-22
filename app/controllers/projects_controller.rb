@@ -5,4 +5,6 @@ class ProjectsController < ApplicationController
   end
   def mattress_pump
   end
+  def jome
+  end
 end
