@@ -4,10 +4,111 @@
 
   <h1>Projet: Jome - language de programmation</h1>
 
+  <p>Note: Ce document est un brouillon rough pour l'instant rédigé avec l'aide de ChatGPT et contient beaucoup d'erreurs.</p>
+
   <p>Jome est un language de programmation spécialisé pour le prototypage.</p>
 
   <h2>Exemples</h2>
 
   <p>La meilleure manière de comprendre est en regardant des exemples.</p>
+
+  <h2>Interpreteur</h2>
+
+  <p>L'interpréteur actuel de Jome suit un processus en plusieurs étapes pour exécuter le code source :</p>
+
+  <h4>1. Analyse lexicale et création de tokens</h4>
+  <p>La première étape consiste à analyser le code source en le découpant en unités de base appelées "tokens". Ces tokens représentent des éléments individuels tels que des mots-clés, des identificateurs, des opérateurs, des symboles, etc. L'interpréteur utilise un analyseur lexical (aussi appelé "lexer" ou "scanner") pour effectuer cette tâche. Il identifie les patterns de caractères dans le code source et génère les tokens correspondants.</p>
+
+  <h4>2. Construction de l'arbre syntaxique</h4>
+  <p>Une fois les tokens créés, l'interpréteur procède à l'analyse syntaxique en utilisant un analyseur syntaxique (aussi appelé "parser"). L'analyseur syntaxique prend les tokens et les organise dans une structure hiérarchique appelée "arbre syntaxique". Cet arbre représente la structure grammaticale du code source et permet de comprendre la logique et les relations entre les différents éléments du langage.</p>
+
+  <h4>3. Évaluation des tokens</h4>
+  <p>Une fois que l'arbre syntaxique est construit, l'interpréteur parcourt l'arbre et évalue les différents tokens. Cette étape consiste à exécuter les instructions et à créer des instances d'objets ou à effectuer d'autres opérations spécifiées par le langage de programmation. L'interpréteur peut utiliser différentes techniques pour évaluer les tokens, telles que l'interprétation directe ou la compilation à la volée (Just-in-Time Compilation).</p>
+
+  <p>Ce processus d'analyse, de construction de l'arbre et d'évaluation des tokens se répète pour chaque instruction ou bloc de code dans le programme, permettant ainsi à l'interpréteur d'exécuter le code source et de produire les résultats attendus.</p>
+
+  <h3>Analyser lexical</h3>
+
+  <p>La conversion du texte en "tokens" est une étape cruciale dans l'interprétation du langage Jome. Cette étape permet de découper le code source en unités significatives qui seront ensuite utilisées pour l'analyse syntaxique et l'exécution du programme.</p>
+
+  <h4>1. Contextes d'analyse</h4>
+  <p>Dans le langage Jome, il existe deux contextes différents pour l'analyse du code :</p>
+  <ul>
+    <li>Le contexte de définition d'objets : Dans ce contexte, le code source est analysé pour définir des objets et créer un arbre de syntaxe selon l'indentation. Ce contexte est souvent utilisé pour décrire la structure hiérarchique des objets et leurs relations.</li>
+    <li>Le contexte d'exécution de code : Dans ce contexte, le code source est analysé pour exécuter des instructions dans des fonctions ou d'autres blocs de code. Ce contexte est utilisé lorsque le code doit être exécuté pour effectuer des calculs, des opérations ou manipuler des données.</li>
+  </ul>
+
+  <h4>2. Analyse lexicale et création de tokens</h4>
+  <p>Pour convertir le texte en tokens, l'interpréteur de Jome utilise un analyseur lexical (lexer) spécifique au langage. L'analyseur lexical analyse le code source caractère par caractère et identifie les patterns correspondants aux différents éléments du langage.</p>
+
+  <p>Dans le contexte de définition d'objets, l'analyseur lexical identifie des tokens tels que :</p>
+  <ul>
+    <li>Mots-clés : aucun mot clé pour l'instant. Jome est multilingue</li>
+    <li>Propriétés : il existe plusieurs sortes de propriétés pour un objet
+      <ul>
+        <li>Constantes : variables constantes par rapport à son contexte</li>
+        <li>Signaux : function commençant par un "~" pour répondre à un évènement, écoute le signal pour répondre</li>
+        <li>Méthodes : function qui peut être appelé sur l'objet</li>
+        <li>Attributs : variables commençant par un "@" pour les variables qui peuvent changer d'état.</li>
+      </ul>
+    </li>
+    <li>Identificateurs : des noms donnés aux objets ou aux variables.</li>
+    <li>Opérateurs : des symboles utilisés pour effectuer des opérations sur les objets.
+      <h5>Opérateurs arithmétiques :</h5>
+      <ul>
+        <li>% : modulo</li>
+        <li>/ : division</li>
+        <li>* : multiplication</li>
+        <li>- : soustraction</li>
+        <li>+ : addition</li>
+      </ul>
+    
+      <h5>Opérateurs de comparaison :</h5>
+      <ul>
+        <li>>= : supérieur ou égal à</li>
+        <li><= : inférieur ou égal à</li>
+        <li>> : supérieur à</li>
+        <li>< : inférieur à</li>
+        <li>!= : différent de</li>
+        <li>== : égal à</li>
+      </ul>
+    
+      <h5>Opérateurs logiques :</h5>
+      <ul>
+        <li>! : NON logique</li>
+        <li>|| : OU logique</li>
+        <li>&& : ET logique</li>
+      </ul>
+    
+      <h5>Opérateurs d'incrémentation et de décrémentation :</h5>
+      <ul>
+        <li>-- : décrémentation</li>
+        <li>++ : incrémentation</li>
+      </ul>
+    
+      <h5>Opérateurs de concaténation de chaînes de caractères :</h5>
+      <ul>
+        <li>+ : concaténation</li>
+      </ul>
+    
+      <h5>Opérateurs d'affectation :</h5>
+      <ul>
+        <li>%= : modulo et affectation</li>
+        <li>/= : division et affectation</li>
+        <li>*= : multiplication et affectation</li>
+        <li-= : soustraction et affectation</li>
+        <li>+= : addition et affectation</li>
+        <li>= : affectation simple</li>
+      </ul>
+    </li>
+    <li>Symboles spéciaux : des caractères spéciaux utilisés pour la structure du code, tels que des parenthèses, des crochets, des points, etc.</li>
+  </ul>
+
+  <p>Dans le contexte d'exécution de code, l'analyseur lexical identifie des tokens tels que :</p>
+  <ul>
+    <li>Mots-clés : des mots réservés spécifiques au langage qui décrivent des actions ou des comportements.</li>
+    <li>Identificateurs : des noms de fonctions, de variables ou d'autres éléments du code.</li>
+    <li>Opérateurs : des symboles utilisés pour effectuer des opérations sur les données.</li>
+    <li>Constantes : des valeurs fixes telles que des nombres, des chaînes de caractères ou des booléens.</li
 
 </div>
